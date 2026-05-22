@@ -1,0 +1,19 @@
+{
+  "_comment": "Manual price overrides for Pandamart (server-side scraping is blocked by PerimeterX captcha). Copy this file to data/pandamart-manual.json and fill in prices you've checked manually on www.foodpanda.com.bd",
+  "rice-chinigura-1kg": {
+    "productName": "Chashi Aromatic Chinigura Rice 1kg",
+    "packSize": "1kg",
+    "price": 165,
+    "originalPrice": null,
+    "available": true,
+    "url": "https://www.foodpanda.com.bd/darkstore/w2lx/pandamart"
+  },
+  "sugar-1kg": {
+    "productName": "Fresh Refined Sugar 1kg",
+    "packSize": "1kg",
+    "price": 115,
+    "originalPrice": 120,
+    "available": true,
+    "url": "https://www.foodpanda.com.bd/darkstore/w2lx/pandamart"
+  }
+}

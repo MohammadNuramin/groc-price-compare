@@ -1,0 +1,30 @@
+services:
+  web:
+    build: .
+    image: groc-price-compare:latest
+    container_name: groc-web
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+    command: npm run dev
+
+  scraper:
+    image: groc-price-compare:latest
+    container_name: groc-scraper
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - LLM_BASE_URL=${LLM_BASE_URL:-http://localhost:8200/v1}
+      - LLM_MODEL=${LLM_MODEL:-cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit}
+      - SKIP_PANDAMART=${SKIP_PANDAMART:-1}
+      - SCRAPE_CONCURRENCY=${SCRAPE_CONCURRENCY:-8}
+    profiles: ["tools"]
+    command: npm run scrape

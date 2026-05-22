@@ -1,0 +1,516 @@
+{
+  "scrapedAt": "2026-05-22T11:57:53.384Z",
+  "rows": [
+    {
+      "catalogId": "rice-chinigura-1kg",
+      "displayName": "Chinigura Rice 1kg",
+      "category": "Rice",
+      "matchType": "category",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Chinigura Rice Premium 1 kg",
+          "brand": "Premium",
+          "packSize": "1 kg",
+          "price": 149,
+          "originalPrice": 159,
+          "available": true,
+          "url": "https://chaldal.com/chinigura-rice-premium-1-kg"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "ACI Aroma Chinigura Rice 1kg",
+          "brand": "ACI Aroma",
+          "packSize": null,
+          "price": 175,
+          "originalPrice": 190,
+          "available": true,
+          "url": "https://www.shwapno.com/aci-aroma-chinigura-rice-1kg"
+        }
+      }
+    },
+    {
+      "catalogId": "rice-miniket-5kg",
+      "displayName": "Miniket Rice 5kg",
+      "category": "Rice",
+      "matchType": "category",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Pran Miniket Rice 5 kg",
+          "brand": "Pran",
+          "packSize": "5 kg",
+          "price": 470,
+          "originalPrice": 470,
+          "available": true,
+          "url": "https://chaldal.com/pran-miniket-rice-5-kg"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "Erfan Miniket Rice 5kg",
+          "brand": "Erfan",
+          "packSize": null,
+          "price": 475,
+          "originalPrice": 485,
+          "available": true,
+          "url": "https://www.shwapno.com/erfan-miniket-rice-5-kg"
+        }
+      }
+    },
+    {
+      "catalogId": "rice-najirshail-5kg",
+      "displayName": "Najirshail Rice 5kg",
+      "category": "Rice",
+      "matchType": "category",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Nazirshail Rice Premium (Half Boiled) ± 50 gm 5 kg",
+          "brand": "Nazirshail Rice Premium",
+          "packSize": "5 kg",
+          "price": 449,
+          "originalPrice": 479,
+          "available": true,
+          "url": "https://chaldal.com/nazirshail-rice-premium-half-boiled-50-gm-5-kg"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "ACI Pure Najirshail Rice 5kg",
+          "brand": "ACI Pure",
+          "packSize": null,
+          "price": 485,
+          "originalPrice": 495,
+          "available": true,
+          "url": "https://www.shwapno.com/aci-pure-premium-najirshail-rice-5kg"
+        }
+      }
+    },
+    {
+      "catalogId": "sugar-1kg",
+      "displayName": "Sugar 1kg",
+      "category": "Sweetener",
+      "matchType": "category",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Fresh Refined Sugar 1 kg",
+          "brand": "Fresh",
+          "packSize": "1 kg",
+          "price": 110,
+          "originalPrice": 110,
+          "available": true,
+          "url": "https://chaldal.com/fresh-refined-sugar-1-kg"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "Teer Sugar 1kg",
+          "brand": "Teer",
+          "packSize": null,
+          "price": 110,
+          "originalPrice": null,
+          "available": true,
+          "url": "https://www.shwapno.com/teer-sugar-1kg"
+        }
+      }
+    },
+    {
+      "catalogId": "salt-1kg",
+      "displayName": "Iodized Salt 1kg",
+      "category": "Spices",
+      "matchType": "category",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Pran Iodized Salt 1 kg",
+          "brand": "Pran",
+          "packSize": "1 kg",
+          "price": 42,
+          "originalPrice": 42,
+          "available": true,
+          "url": "https://chaldal.com/pran-iodized-salt-1-kg"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "ACI Pure Salt 1kg",
+          "brand": "ACI Pure",
+          "packSize": null,
+          "price": 42,
+          "originalPrice": null,
+          "available": true,
+          "url": "https://www.shwapno.com/aci-pure-salt-1kg"
+        }
+      }
+    },
+    {
+      "catalogId": "oil-soybean-1l",
+      "displayName": "Soybean Oil 1L",
+      "category": "Oil",
+      "matchType": "sku",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Pusti Fortified Soyabean Oil 1 ltr",
+          "brand": "Pusti",
+          "packSize": "1 ltr",
+          "price": 199,
+          "originalPrice": 199,
+          "available": true,
+          "url": "https://chaldal.com/pusti-fortified-soyabean-oil-1-ltr"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "Pusti Soyabean Oil 1Ltr.",
+          "brand": "Pusti",
+          "packSize": null,
+          "price": 199,
+          "originalPrice": null,
+          "available": true,
+          "url": "https://www.shwapno.com/pusti-soyabean-oil-1liter"
+        }
+      }
+    },
+    {
+      "catalogId": "oil-soybean-5l",
+      "displayName": "Soybean Oil 5L",
+      "category": "Oil",
+      "matchType": "category",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Soyabean Oil (Any Brand) 5 ltr",
+          "brand": "Soyabean Oil",
+          "packSize": "5 ltr",
+          "price": 955,
+          "originalPrice": 955,
+          "available": true,
+          "url": "https://chaldal.com/soyabean-oil-any-brand-5-ltr"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "Pusti Soyabean Oil 5Ltr.",
+          "brand": "Pusti",
+          "packSize": null,
+          "price": 975,
+          "originalPrice": null,
+          "available": true,
+          "url": "https://www.shwapno.com/pusti-soyabean-oil-5liter"
+        }
+      }
+    },
+    {
+      "catalogId": "lentil-red-1kg",
+      "displayName": "Red Lentil (Masoor Dal) 1kg",
+      "category": "Lentils",
+      "matchType": "category",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Moshur Dal (Imported) 1 kg",
+          "brand": "Moshur Dal",
+          "packSize": "1 kg",
+          "price": 109,
+          "originalPrice": 109,
+          "available": true,
+          "url": "https://chaldal.com/moshur-dal-imported-1-kg"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "Akij Essential Red Lentil 1kg",
+          "brand": "Akij Essential",
+          "packSize": null,
+          "price": 130,
+          "originalPrice": 140,
+          "available": true,
+          "url": "https://www.shwapno.com/akij-essential-red-lentil-1-kg"
+        }
+      }
+    },
+    {
+      "catalogId": "lentil-mung-1kg",
+      "displayName": "Mung Dal 1kg",
+      "category": "Lentils",
+      "matchType": "category",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Memory Mug Dal 1 kg",
+          "brand": "Memory",
+          "packSize": "1 kg",
+          "price": 165,
+          "originalPrice": 165,
+          "available": true,
+          "url": "https://chaldal.com/memory-mug-dal-1-kg"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "ACI Pure Mung Dal 1kg",
+          "brand": "ACI Pure",
+          "packSize": null,
+          "price": 210,
+          "originalPrice": null,
+          "available": true,
+          "url": "https://www.shwapno.com/aci-pure-mung-dal-1-kg"
+        }
+      }
+    },
+    {
+      "catalogId": "flour-atta-2kg",
+      "displayName": "Atta (Whole Wheat Flour) 2kg",
+      "category": "Flour",
+      "matchType": "category",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Teer Flour (Atta) 2 kg",
+          "brand": "Teer",
+          "packSize": "2 kg",
+          "price": 130,
+          "originalPrice": 130,
+          "available": true,
+          "url": "https://chaldal.com/teer-atta-2-kg"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "Fresh Atta 2kg",
+          "brand": "Fresh",
+          "packSize": null,
+          "price": 110,
+          "originalPrice": 130,
+          "available": true,
+          "url": "https://www.shwapno.com/fresh-atta-2kg"
+        }
+      }
+    },
+    {
+      "catalogId": "flour-maida-1kg",
+      "displayName": "Maida (Flour) 1kg",
+      "category": "Flour",
+      "matchType": "category",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "White Flour (Maida) 1 kg",
+          "brand": "White Flour",
+          "packSize": "1 kg",
+          "price": 59,
+          "originalPrice": 70,
+          "available": true,
+          "url": "https://chaldal.com/white-flour-maida-1-kg"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "Teer Maida 1kg",
+          "brand": "Teer",
+          "packSize": null,
+          "price": 70,
+          "originalPrice": null,
+          "available": true,
+          "url": "https://www.shwapno.com/Teer-Maida-1Kg"
+        }
+      }
+    },
+    {
+      "catalogId": "egg-12pcs",
+      "displayName": "Farm Eggs (12 pcs)",
+      "category": "Dairy & Eggs",
+      "matchType": "single",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Chicken Eggs (Layer) 12 pcs",
+          "brand": "Chicken Eggs",
+          "packSize": "12 pcs",
+          "price": 139,
+          "originalPrice": 145,
+          "available": true,
+          "url": "https://chaldal.com/tatka-egg-pack-12-pcs"
+        }
+      }
+    },
+    {
+      "catalogId": "milk-powder-500g",
+      "displayName": "Milk Powder 500g",
+      "category": "Dairy & Eggs",
+      "matchType": "category",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Marks Full Cream Milk Powder Poly 500 gm",
+          "brand": "Marks",
+          "packSize": "500 gm",
+          "price": 480,
+          "originalPrice": 480,
+          "available": true,
+          "url": "https://chaldal.com/marks-full-cream-milk-powder-poly-500-gm"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "Diploma Instant Full Cream Milk Powder 500gm (Foil Pack)",
+          "brand": "Diploma",
+          "packSize": null,
+          "price": 480,
+          "originalPrice": null,
+          "available": true,
+          "url": "https://www.shwapno.com/diploma-i-f-c-m-p-500-gm-foil-pack"
+        }
+      }
+    },
+    {
+      "catalogId": "onion-1kg",
+      "displayName": "Onion 1kg",
+      "category": "Vegetables",
+      "matchType": "single",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Deshi Peyaj (Local Onion) ± 50 gm 1 kg",
+          "brand": "Deshi Peyaj",
+          "packSize": "1 kg",
+          "price": 45,
+          "originalPrice": 50,
+          "available": true,
+          "url": "https://chaldal.com/onion-local-1-kg-2"
+        }
+      }
+    },
+    {
+      "catalogId": "potato-1kg",
+      "displayName": "Potato 1kg",
+      "category": "Vegetables",
+      "matchType": "single",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Potato Regular (± 50 gm) 1 kg",
+          "brand": "Potato Regular",
+          "packSize": "1 kg",
+          "price": 24,
+          "originalPrice": 30,
+          "available": true,
+          "url": "https://chaldal.com/potato-alu-1-kg-2"
+        }
+      }
+    },
+    {
+      "catalogId": "garlic-500g",
+      "displayName": "Garlic 500g",
+      "category": "Vegetables",
+      "matchType": "single",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Roshun (Garlic Imported) ± 25 gm 500 gm",
+          "brand": "Roshun",
+          "packSize": "500 gm",
+          "price": 89,
+          "originalPrice": 109,
+          "available": true,
+          "url": "https://chaldal.com/garlic-roshun-premium-500-gm-2"
+        }
+      }
+    },
+    {
+      "catalogId": "tea-black-500g",
+      "displayName": "Black Tea 500g",
+      "category": "Beverages",
+      "matchType": "category",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Jafflong Gold Black Tea 500 gm",
+          "brand": "Jafflong Gold",
+          "packSize": "500 gm",
+          "price": 230,
+          "originalPrice": 230,
+          "available": true,
+          "url": "https://chaldal.com/jafflong-gold-black-tea-500-gm"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "Aabesh Magic Blend Black Tea (Buy400gm Get100gm Free)",
+          "brand": "Aabesh",
+          "packSize": null,
+          "price": 225,
+          "originalPrice": null,
+          "available": true,
+          "url": "https://www.shwapno.com/aabesh-magic-blend-black-tea-buy-400-gm-get-200-gm-free"
+        }
+      }
+    },
+    {
+      "catalogId": "chicken-broiler-1kg",
+      "displayName": "Broiler Chicken 1kg",
+      "category": "Meat",
+      "matchType": "sku",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Broiler Chicken Skin On ± 50 gm 1 kg",
+          "brand": "Broiler Chicken",
+          "packSize": "1 kg",
+          "price": 299,
+          "originalPrice": 319,
+          "available": true,
+          "url": "https://chaldal.com/whole-broiler-chicken-skin-on-net-weight-1-kg"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "Broiler Chicken (With Skin) Kg",
+          "brand": "Broiler Chicken",
+          "packSize": null,
+          "price": 291,
+          "originalPrice": null,
+          "available": true,
+          "url": "https://www.shwapno.com/broiler-chicken-with-skin-per-kg"
+        }
+      }
+    },
+    {
+      "catalogId": "fish-rui-1kg",
+      "displayName": "Rui Fish 1kg",
+      "category": "Fish",
+      "matchType": "single",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Rui Fish After Cutting ±50 gm 1 kg",
+          "brand": "Rui Fish",
+          "packSize": "1 kg",
+          "price": 399,
+          "originalPrice": 419,
+          "available": true,
+          "url": "https://chaldal.com/rui-fish-net-weight-after-cutting-800-gm"
+        }
+      }
+    },
+    {
+      "catalogId": "turmeric-200g",
+      "displayName": "Turmeric Powder 200g",
+      "category": "Spices",
+      "matchType": "category",
+      "offers": {
+        "chaldal": {
+          "shop": "chaldal",
+          "productName": "Radhuni Turmeric (Holud) Powder 200 gm",
+          "brand": "Radhuni",
+          "packSize": "200 gm",
+          "price": 145,
+          "originalPrice": 145,
+          "available": true,
+          "url": "https://chaldal.com/radhuni-turmeric-holud-powder-200-gm"
+        },
+        "shwapno": {
+          "shop": "shwapno",
+          "productName": "Chefs Choice Turmeric Powder 200gm",
+          "brand": "Chefs Choice",
+          "packSize": null,
+          "price": 125,
+          "originalPrice": 145,
+          "available": true,
+          "url": "https://www.shwapno.com/chefs-choice-turmeric-powder-200gm"
+        }
+      }
+    }
+  ],
+  "errors": []
+}

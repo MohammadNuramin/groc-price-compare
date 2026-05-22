@@ -1,0 +1,19 @@
+node_modules
+.next
+.env.local
+.env
+*.log
+
+# User-provided overrides (may contain manually-entered prices)
+data/pandamart-manual.json
+
+# CloakBrowser binary cache (if used)
+.cloakbrowser
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
