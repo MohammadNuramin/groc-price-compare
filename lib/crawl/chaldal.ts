@@ -1,5 +1,5 @@
 import type { RawProduct } from "./types";
-import { extractBrand, extractSizeFromName } from "./extract";
+import { extractBrand, extractSizeFromName, inferCategoryFromName } from "./extract";
 
 const ENDPOINT = "https://catalog.chaldal.com/searchOld";
 const API_KEY = "e964fc2d51064efa97e94db7c64bf3d044279d4ed0ad4bdd9dce89fecc9156f0";
@@ -147,24 +147,31 @@ export async function crawlChaldal(
   }
 
   // Phase 2: catch-all no-filter pass. Picks up everything that lives in
-  // categories we don't have IDs for. These products get labeled
-  // "Uncategorized" since the search API doesn't echo back category info.
+  // categories we don't have IDs for. Products get a category inferred from
+  // their name by keyword rules (shampoo/soap → Personal Care, biscuit →
+  // Biscuits, etc.) so they can cross-shop bucket with Shwapno's named
+  // categories. Anything that doesn't match a keyword rule is labeled
+  // "Uncategorized".
   onProgress?.(`  · Chaldal no-filter sweep for remaining products …`);
   let allPage = 0;
   let allTotalPages = 1;
   let sweepAdded = 0;
+  const inferredCounts = new Map<string, number>();
   while (allPage < allTotalPages) {
     try {
       const resp = await fetchPage(allPage, null);
       const hits = resp.hits ?? [];
       allTotalPages = resp.nbPages ?? 1;
       for (const h of hits) {
-        const p = hitToRawProduct(h, "Uncategorized");
+        if (!h.name) continue;
+        const inferred = inferCategoryFromName(h.name) ?? "Uncategorized";
+        const p = hitToRawProduct(h, inferred);
         if (!p) continue;
         const key = `chaldal:${p.shopProductId}`;
         if (!seen.has(key)) {
           seen.set(key, p);
           sweepAdded++;
+          inferredCounts.set(inferred, (inferredCounts.get(inferred) ?? 0) + 1);
         }
       }
       allPage++;
@@ -176,7 +183,12 @@ export async function crawlChaldal(
     }
   }
   if (sweepAdded > 0) categoriesCrawled++;
-  onProgress?.(`  · Chaldal Uncategorized            (all)   → ${sweepAdded} new products`);
+  onProgress?.(`  · Chaldal no-filter sweep            → ${sweepAdded} new products`);
+  const breakdown = Array.from(inferredCounts.entries())
+    .sort((a, b) => b[1] - a[1])
+    .map(([cat, n]) => `${cat}=${n}`)
+    .join(", ");
+  if (breakdown) onProgress?.(`     inferred categories: ${breakdown}`);
 
   return { products: Array.from(seen.values()), categoriesCrawled };
 }
