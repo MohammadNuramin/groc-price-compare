@@ -49,19 +49,27 @@ function sizeBucket(p: RawProduct): string | null {
   return null;
 }
 
+import type { Shop } from "../types";
+
 interface Bucket {
   category: string;
   rawCategory: string;
   size: string;
   sizeDisplay: string | null;
-  chaldal: RawProduct[];
-  shwapno: RawProduct[];
+  // Buckets for cross-shop pairing. We do PAIRWISE matching (A-vs-B, A-vs-C,
+  // B-vs-C) so the same product list shape works for any pair of shops.
+  byShop: Partial<Record<Shop, RawProduct[]>>;
 }
+
+const SHOP_PAIRS: Array<[Shop, Shop]> = [
+  ["chaldal", "shwapno"],
+  ["chaldal", "pandamart"],
+  ["shwapno", "pandamart"],
+];
 
 function bucketize(products: RawProduct[]): Bucket[] {
   const map = new Map<string, Bucket>();
   for (const p of products) {
-    if (p.shop !== "chaldal" && p.shop !== "shwapno") continue;
     const size = sizeBucket(p);
     if (!size) continue;
     const cat = canonicalCategory(p.category);
@@ -74,15 +82,17 @@ function bucketize(products: RawProduct[]): Bucket[] {
         rawCategory: p.category,
         size,
         sizeDisplay: sn.display,
-        chaldal: [],
-        shwapno: [],
+        byShop: {},
       };
       map.set(key, b);
     }
-    if (p.shop === "chaldal") b.chaldal.push(p);
-    else b.shwapno.push(p);
+    if (!b.byShop[p.shop]) b.byShop[p.shop] = [];
+    b.byShop[p.shop]!.push(p);
   }
-  return Array.from(map.values()).filter((b) => b.chaldal.length > 0 && b.shwapno.length > 0);
+  // Keep buckets that have at least 2 different shops represented (any pair).
+  return Array.from(map.values()).filter(
+    (b) => Object.keys(b.byShop).length >= 2,
+  );
 }
 
 function chunk<T>(arr: T[], size: number): T[][] {
@@ -189,28 +199,36 @@ function parsePairs(reply: string, cMax: number, sMax: number): Array<[number, n
 
 interface PairResult {
   bucket: Bucket;
-  pairs: Array<[number, number]>; // indexes within the original bucket arrays
+  shopA: Shop;
+  shopB: Shop;
+  pairs: Array<[number, number]>; // indexes within bucket.byShop[shopA/B]
 }
 
-async function processBucket(bucket: Bucket): Promise<PairResult> {
+async function processBucketPair(
+  bucket: Bucket,
+  shopA: Shop,
+  shopB: Shop,
+): Promise<PairResult> {
+  const a = bucket.byShop[shopA] ?? [];
+  const b = bucket.byShop[shopB] ?? [];
   const allPairs: Array<[number, number]> = [];
-  const cChunks = chunk(bucket.chaldal, MAX_PER_SHOP_PER_BATCH);
-  const sChunks = chunk(bucket.shwapno, MAX_PER_SHOP_PER_BATCH);
+  const aChunks = chunk(a, MAX_PER_SHOP_PER_BATCH);
+  const bChunks = chunk(b, MAX_PER_SHOP_PER_BATCH);
 
-  let cOffset = 0;
-  for (const cBatch of cChunks) {
-    let sOffset = 0;
-    for (const sBatch of sChunks) {
-      const reply = await callLLM(buildPrompt(cBatch, sBatch));
-      const localPairs = parsePairs(reply, cBatch.length, sBatch.length);
-      for (const [ci, si] of localPairs) {
-        allPairs.push([cOffset + ci, sOffset + si]);
+  let aOffset = 0;
+  for (const aBatch of aChunks) {
+    let bOffset = 0;
+    for (const bBatch of bChunks) {
+      const reply = await callLLM(buildPrompt(aBatch, bBatch));
+      const localPairs = parsePairs(reply, aBatch.length, bBatch.length);
+      for (const [ai, bi] of localPairs) {
+        allPairs.push([aOffset + ai, bOffset + bi]);
       }
-      sOffset += sBatch.length;
+      bOffset += bBatch.length;
     }
-    cOffset += cBatch.length;
+    aOffset += aBatch.length;
   }
-  return { bucket, pairs: allPairs };
+  return { bucket, shopA, shopB, pairs: allPairs };
 }
 
 function brandTokens(s: string | null | undefined): Set<string> {
@@ -236,34 +254,37 @@ function brandsCompatible(a: string | null, b: string | null): boolean {
 function pairsToMatchGroups(results: PairResult[]): MatchGroup[] {
   const groups: MatchGroup[] = [];
   let rejected = 0;
-  for (const { bucket, pairs } of results) {
-    for (const [ci, si] of pairs) {
-      const cp = bucket.chaldal[ci];
-      const sp = bucket.shwapno[si];
-      if (!cp || !sp) continue;
+  for (const { bucket, shopA, shopB, pairs } of results) {
+    const aList = bucket.byShop[shopA] ?? [];
+    const bList = bucket.byShop[shopB] ?? [];
+    for (const [ai, bi] of pairs) {
+      const ap = aList[ai];
+      const bp = bList[bi];
+      if (!ap || !bp) continue;
       // Brand sanity check — LLM occasionally pairs same-size/same-category
-      // products with completely different brands (e.g., "Radhuni Mustard Oil"
-      // vs "KENT Pomace Olive Oil"). Require at least one shared brand token.
-      if (!brandsCompatible(cp.brand, sp.brand)) {
+      // products with completely different brands. Require at least one
+      // shared brand token.
+      if (!brandsCompatible(ap.brand, bp.brand)) {
         rejected++;
         continue;
       }
-      const sn = normalizeSize(cp.packSize);
-      const cheapest =
-        (typeof cp.price === "number" ? cp.price : Infinity) <=
-        (typeof sp.price === "number" ? sp.price : Infinity)
-          ? cp
-          : sp;
+      const sn = normalizeSize(ap.packSize);
+      const aPrice = typeof ap.price === "number" ? ap.price : Infinity;
+      const bPrice = typeof bp.price === "number" ? bp.price : Infinity;
+      const cheapest = aPrice <= bPrice ? ap : bp;
+      const offers: { [K in Shop]?: RawProduct[] } = {};
+      offers[shopA] = [ap];
+      offers[shopB] = [bp];
       groups.push({
-        key: `llm:${bucket.category}|${bucket.size}|${cp.shopProductId}|${sp.shopProductId}`,
-        brand: cp.brand ?? sp.brand,
+        key: `llm:${bucket.category}|${bucket.size}|${shopA}:${ap.shopProductId}|${shopB}:${bp.shopProductId}`,
+        brand: ap.brand ?? bp.brand,
         sizeDisplay: sn.display,
         asGrams: sn.asGrams,
         asMl: sn.asMl,
         asPieces: sn.asPieces,
         variety: null,
-        category: cp.category,
-        offers: { chaldal: [cp], shwapno: [sp] },
+        category: ap.category,
+        offers,
         cheapestPrice: typeof cheapest.price === "number" ? cheapest.price : null,
         cheapestShop: cheapest.shop,
       });
@@ -408,29 +429,44 @@ export async function findLLMMatches(
 
   const buckets = bucketize(remaining);
   opts.onProgress?.(
-    `Bucketed into ${buckets.length} (category × size) buckets with both Chaldal + Shwapno present`,
+    `Bucketed into ${buckets.length} (category × size) buckets with ≥2 shops present`,
   );
 
-  // Worker pool
-  const queue = [...buckets];
+  // Build a flat list of (bucket, shopA, shopB) work items — one per pair of
+  // shops co-present in each bucket.
+  type Work = { bucket: Bucket; a: Shop; b: Shop };
+  const work: Work[] = [];
+  for (const b of buckets) {
+    for (const [a, c] of SHOP_PAIRS) {
+      const aN = (b.byShop[a] ?? []).length;
+      const cN = (b.byShop[c] ?? []).length;
+      if (aN > 0 && cN > 0) work.push({ bucket: b, a, b: c });
+    }
+  }
+  opts.onProgress?.(
+    `${work.length} (bucket × shop-pair) work items to send to LLM`,
+  );
+
+  // Worker pool over work items
+  const queue = [...work];
   const results: PairResult[] = [];
   let done = 0;
   async function worker() {
     while (queue.length > 0) {
-      const b = queue.shift();
-      if (!b) return;
+      const w = queue.shift();
+      if (!w) return;
       try {
-        const r = await processBucket(b);
+        const r = await processBucketPair(w.bucket, w.a, w.b);
         results.push(r);
         done++;
-        if (done % 10 === 0 || done === buckets.length) {
+        if (done % 20 === 0 || done === work.length) {
           opts.onProgress?.(
-            `  · ${done}/${buckets.length} buckets done (${results.reduce((a, r) => a + r.pairs.length, 0)} pairs found)`,
+            `  · ${done}/${work.length} work items done (${results.reduce((a, r) => a + r.pairs.length, 0)} raw pairs)`,
           );
         }
       } catch (err) {
         opts.onProgress?.(
-          `  ! bucket ${b.category}|${b.size} failed: ${err instanceof Error ? err.message : String(err)}`,
+          `  ! ${w.a}↔${w.b} ${w.bucket.category}|${w.bucket.size} failed: ${err instanceof Error ? err.message : String(err)}`,
         );
       }
     }

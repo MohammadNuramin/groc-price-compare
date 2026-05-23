@@ -2,21 +2,26 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 import { crawlChaldal } from "./chaldal";
 import { crawlShwapno } from "./shwapno";
+import { crawlPandamartWayback } from "./pandamart-wayback";
 import type { CrawlSnapshot } from "./types";
 
 const OUTPUT_PATH = "data/all-products.json";
 
 async function main() {
   const startedAt = Date.now();
-  console.log("Full crawl: Chaldal + Shwapno (parallel)\n");
+  console.log("Full crawl: Chaldal + Shwapno + Pandamart (parallel)\n");
 
-  const [chaldal, shwapno] = await Promise.all([
+  const [chaldal, shwapno, pandamart] = await Promise.all([
     crawlChaldal((msg) => console.log(msg)).catch((err) => {
       console.error("Chaldal crawl FAILED:", err);
       return { products: [], categoriesCrawled: 0 };
     }),
     crawlShwapno((msg) => console.log(msg)).catch((err) => {
       console.error("Shwapno crawl FAILED:", err);
+      return { products: [], categoriesCrawled: 0 };
+    }),
+    crawlPandamartWayback((msg) => console.log(msg)).catch((err) => {
+      console.error("Pandamart (Wayback) crawl FAILED:", err);
       return { products: [], categoriesCrawled: 0 };
     }),
   ]);
@@ -26,8 +31,9 @@ async function main() {
     shops: {
       chaldal: { categoriesCrawled: chaldal.categoriesCrawled, productsFound: chaldal.products.length },
       shwapno: { categoriesCrawled: shwapno.categoriesCrawled, productsFound: shwapno.products.length },
+      pandamart: { categoriesCrawled: pandamart.categoriesCrawled, productsFound: pandamart.products.length },
     },
-    products: [...chaldal.products, ...shwapno.products],
+    products: [...chaldal.products, ...shwapno.products, ...pandamart.products],
   };
 
   await mkdir(dirname(OUTPUT_PATH), { recursive: true });
@@ -35,7 +41,7 @@ async function main() {
 
   const elapsed = ((Date.now() - startedAt) / 1000).toFixed(1);
   console.log(
-    `\nDone in ${elapsed}s — Chaldal ${chaldal.products.length} products in ${chaldal.categoriesCrawled} cats, Shwapno ${shwapno.products.length} products in ${shwapno.categoriesCrawled} cats. Total ${snapshot.products.length}. Wrote ${OUTPUT_PATH}`,
+    `\nDone in ${elapsed}s — Chaldal ${chaldal.products.length} / Shwapno ${shwapno.products.length} / Pandamart ${pandamart.products.length}. Total ${snapshot.products.length}. Wrote ${OUTPUT_PATH}`,
   );
 }
 
