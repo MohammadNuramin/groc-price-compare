@@ -51,7 +51,10 @@ interface ChaldalSearchResponse {
   nbPages?: number;
 }
 
-async function fetchPage(categoryId: number, page: number): Promise<ChaldalSearchResponse> {
+async function fetchPage(
+  page: number,
+  categoryId: number | null,
+): Promise<ChaldalSearchResponse> {
   const body = {
     apiKey: API_KEY,
     storeId: 1,
@@ -63,7 +66,7 @@ async function fetchPage(categoryId: number, page: number): Promise<ChaldalSearc
     productVariantId: -1,
     bundleId: { case: "None" },
     canSeeOutOfStock: "true",
-    filters: [`categories=${categoryId}`],
+    filters: categoryId === null ? [] : [`categories=${categoryId}`],
     maxOutOfStockCount: { case: "Some", fields: [5] },
     shouldShowAlternateProductsForAllOutOfStock: { case: "Some", fields: [true] },
     customerGuid: { case: "None" },
@@ -80,7 +83,7 @@ async function fetchPage(categoryId: number, page: number): Promise<ChaldalSearc
     body: JSON.stringify(body),
   });
   if (!res.ok) {
-    throw new Error(`Chaldal HTTP ${res.status} (category=${categoryId} page=${page})`);
+    throw new Error(`Chaldal HTTP ${res.status} (category=${categoryId ?? "all"} page=${page})`);
   }
   return (await res.json()) as ChaldalSearchResponse;
 }
@@ -109,13 +112,14 @@ export async function crawlChaldal(
   const seen = new Map<string, RawProduct>();
   let categoriesCrawled = 0;
 
+  // Phase 1: per-category crawl (gives us category labels where we know the ID).
   for (const cat of CHALDAL_CATEGORIES) {
     let page = 0;
     let totalPages = 1;
     let firstSeenInCat = 0;
     while (page < totalPages) {
       try {
-        const resp = await fetchPage(cat.id, page);
+        const resp = await fetchPage(page, cat.id);
         const hits = resp.hits ?? [];
         totalPages = resp.nbPages ?? 1;
         let added = 0;
@@ -139,9 +143,40 @@ export async function crawlChaldal(
     }
     if (firstSeenInCat > 0) categoriesCrawled++;
     onProgress?.(`  · Chaldal ${cat.name.padEnd(22)} (id=${cat.id}) → ${firstSeenInCat} new products`);
-    // Politeness delay between categories
     await new Promise((r) => setTimeout(r, 150));
   }
+
+  // Phase 2: catch-all no-filter pass. Picks up everything that lives in
+  // categories we don't have IDs for. These products get labeled
+  // "Uncategorized" since the search API doesn't echo back category info.
+  onProgress?.(`  · Chaldal no-filter sweep for remaining products …`);
+  let allPage = 0;
+  let allTotalPages = 1;
+  let sweepAdded = 0;
+  while (allPage < allTotalPages) {
+    try {
+      const resp = await fetchPage(allPage, null);
+      const hits = resp.hits ?? [];
+      allTotalPages = resp.nbPages ?? 1;
+      for (const h of hits) {
+        const p = hitToRawProduct(h, "Uncategorized");
+        if (!p) continue;
+        const key = `chaldal:${p.shopProductId}`;
+        if (!seen.has(key)) {
+          seen.set(key, p);
+          sweepAdded++;
+        }
+      }
+      allPage++;
+    } catch (err) {
+      onProgress?.(
+        `  ! no-filter page ${allPage} failed: ${err instanceof Error ? err.message : String(err)}`,
+      );
+      break;
+    }
+  }
+  if (sweepAdded > 0) categoriesCrawled++;
+  onProgress?.(`  · Chaldal Uncategorized            (all)   → ${sweepAdded} new products`);
 
   return { products: Array.from(seen.values()), categoriesCrawled };
 }

@@ -1,11 +1,11 @@
 {
-  "matchedAt": "2026-05-22T13:21:50.341Z",
+  "matchedAt": "2026-05-23T07:15:26.151Z",
   "llmModel": "gemma-4-8b-thinking",
   "llmBaseUrl": "redacted",
   "totals": {
     "deterministic": 97,
-    "llm": 30,
-    "combined": 127
+    "llm": 24,
+    "combined": 121
   },
   "groups": [
     {
@@ -1417,50 +1417,6 @@
       "cheapestShop": "shwapno"
     },
     {
-      "key": "spices||radhuni chilli|g|100",
-      "brand": "Radhuni Chilli",
-      "sizeDisplay": "100 g",
-      "asGrams": 100,
-      "asMl": null,
-      "asPieces": null,
-      "variety": null,
-      "category": "Spices",
-      "offers": {
-        "chaldal": [
-          {
-            "shop": "chaldal",
-            "shopProductId": 2400,
-            "productName": "Radhuni Chilli (Morich) Powder 100 gm",
-            "brand": "Radhuni Chilli",
-            "packSize": "100 gm",
-            "category": "Spices",
-            "price": 75,
-            "originalPrice": 75,
-            "available": true,
-            "url": "https://chaldal.com/radhuni-chilli-morich-powder-100-gm",
-            "imageUrl": "https://chaldn.com/_mpimage/radhuni-chilli-morich-powder-100-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D132509&q=best&v=1"
-          }
-        ],
-        "shwapno": [
-          {
-            "shop": "shwapno",
-            "shopProductId": "2700154",
-            "productName": "Radhuni Chilli (Morich) Powder 100gm",
-            "brand": "Radhuni Chilli",
-            "packSize": "100 g",
-            "category": "Spices",
-            "price": 75,
-            "originalPrice": null,
-            "available": true,
-            "url": "https://www.shwapno.com/radhuni-chilli-morich-powder-100gm",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa95c0115075f231ecc99e_Radhuni-Chilli-Morich-Powder-100gm_1.webp"
-          }
-        ]
-      },
-      "cheapestPrice": 75,
-      "cheapestShop": "chaldal"
-    },
-    {
       "key": "spices||radhuni cumin|g|100",
       "brand": "Radhuni Cumin",
       "sizeDisplay": "100 g",
@@ -1502,6 +1458,50 @@
         ]
       },
       "cheapestPrice": 160,
+      "cheapestShop": "chaldal"
+    },
+    {
+      "key": "spices||radhuni panch|g|50",
+      "brand": "Radhuni Panch",
+      "sizeDisplay": "50 g",
+      "asGrams": 50,
+      "asMl": null,
+      "asPieces": null,
+      "variety": null,
+      "category": "Spices",
+      "offers": {
+        "chaldal": [
+          {
+            "shop": "chaldal",
+            "shopProductId": 9583,
+            "productName": "Radhuni Panch Phoran 50 gm",
+            "brand": "Radhuni Panch",
+            "packSize": "50 gm",
+            "category": "Spices",
+            "price": 30,
+            "originalPrice": 30,
+            "available": true,
+            "url": "https://chaldal.com/radhuni-panch-phoran-50-gm",
+            "imageUrl": "https://chaldn.com/_mpimage/radhuni-panch-phoran-50-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D132545&q=best&v=1"
+          }
+        ],
+        "shwapno": [
+          {
+            "shop": "shwapno",
+            "shopProductId": "2700164",
+            "productName": "Radhuni Panch Foran 50gm",
+            "brand": "Radhuni Panch",
+            "packSize": "50 g",
+            "category": "Spices",
+            "price": 30,
+            "originalPrice": null,
+            "available": true,
+            "url": "https://www.shwapno.com/radhuni-panch-foran-50gm",
+            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/6853e21333549f984edcec1a_Radhuni-Panch-Foran-50gm_1.webp"
+          }
+        ]
+      },
+      "cheapestPrice": 30,
       "cheapestShop": "chaldal"
     },
     {
@@ -1586,6 +1586,50 @@
             "available": true,
             "url": "https://www.shwapno.com/radhuni-turmeric-holud-powder-100gm",
             "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa95bc115075f231ecc96a_Radhuni-Turmeric-Holud-Powder-100gm_1.webp"
+          }
+        ]
+      },
+      "cheapestPrice": 75,
+      "cheapestShop": "chaldal"
+    },
+    {
+      "key": "spices||radhuni chilli|g|100",
+      "brand": "Radhuni Chilli",
+      "sizeDisplay": "100 g",
+      "asGrams": 100,
+      "asMl": null,
+      "asPieces": null,
+      "variety": null,
+      "category": "Spices",
+      "offers": {
+        "chaldal": [
+          {
+            "shop": "chaldal",
+            "shopProductId": 2400,
+            "productName": "Radhuni Chilli (Morich) Powder 100 gm",
+            "brand": "Radhuni Chilli",
+            "packSize": "100 gm",
+            "category": "Spices",
+            "price": 75,
+            "originalPrice": 75,
+            "available": true,
+            "url": "https://chaldal.com/radhuni-chilli-morich-powder-100-gm",
+            "imageUrl": "https://chaldn.com/_mpimage/radhuni-chilli-morich-powder-100-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D132509&q=best&v=1"
+          }
+        ],
+        "shwapno": [
+          {
+            "shop": "shwapno",
+            "shopProductId": "2700154",
+            "productName": "Radhuni Chilli (Morich) Powder 100gm",
+            "brand": "Radhuni Chilli",
+            "packSize": "100 g",
+            "category": "Spices",
+            "price": 75,
+            "originalPrice": null,
+            "available": true,
+            "url": "https://www.shwapno.com/radhuni-chilli-morich-powder-100gm",
+            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa95c0115075f231ecc99e_Radhuni-Chilli-Morich-Powder-100gm_1.webp"
           }
         ]
       },
@@ -1767,50 +1811,6 @@
       },
       "cheapestPrice": 315,
       "cheapestShop": "shwapno"
-    },
-    {
-      "key": "spices||radhuni panch|g|50",
-      "brand": "Radhuni Panch",
-      "sizeDisplay": "50 g",
-      "asGrams": 50,
-      "asMl": null,
-      "asPieces": null,
-      "variety": null,
-      "category": "Spices",
-      "offers": {
-        "chaldal": [
-          {
-            "shop": "chaldal",
-            "shopProductId": 9583,
-            "productName": "Radhuni Panch Phoran 50 gm",
-            "brand": "Radhuni Panch",
-            "packSize": "50 gm",
-            "category": "Spices",
-            "price": 30,
-            "originalPrice": 30,
-            "available": true,
-            "url": "https://chaldal.com/radhuni-panch-phoran-50-gm",
-            "imageUrl": "https://chaldn.com/_mpimage/radhuni-panch-phoran-50-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D132545&q=best&v=1"
-          }
-        ],
-        "shwapno": [
-          {
-            "shop": "shwapno",
-            "shopProductId": "2700164",
-            "productName": "Radhuni Panch Foran 50gm",
-            "brand": "Radhuni Panch",
-            "packSize": "50 g",
-            "category": "Spices",
-            "price": 30,
-            "originalPrice": null,
-            "available": true,
-            "url": "https://www.shwapno.com/radhuni-panch-foran-50gm",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/6853e21333549f984edcec1a_Radhuni-Panch-Foran-50gm_1.webp"
-          }
-        ]
-      },
-      "cheapestPrice": 30,
-      "cheapestShop": "chaldal"
     },
     {
       "key": "spices||radhuni garam|g|15",
@@ -2297,6 +2297,50 @@
       "cheapestShop": "shwapno"
     },
     {
+      "key": "eggs||purnava omega|pcs|12",
+      "brand": "Purnava Omega",
+      "sizeDisplay": "12 pcs",
+      "asGrams": null,
+      "asMl": null,
+      "asPieces": 12,
+      "variety": null,
+      "category": "Eggs",
+      "offers": {
+        "chaldal": [
+          {
+            "shop": "chaldal",
+            "shopProductId": 9751,
+            "productName": "Purnava Omega 3 Enriched Eggs 12 pcs",
+            "brand": "Purnava Omega",
+            "packSize": "12 pcs",
+            "category": "Eggs",
+            "price": 280,
+            "originalPrice": 280,
+            "available": true,
+            "url": "https://chaldal.com/purnava-omega-3-enriched-eggs-12-pcs",
+            "imageUrl": "https://chaldn.com/_mpimage/purnava-omega-3-enriched-eggs-12-pcs?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D132429&q=best&v=1"
+          }
+        ],
+        "shwapno": [
+          {
+            "shop": "shwapno",
+            "shopProductId": "3100878",
+            "productName": "Purnava Omega 3 enriched Egg (12Pcs Pack)",
+            "brand": "Purnava Omega",
+            "packSize": "12 pcs",
+            "category": "Eggs",
+            "price": 280,
+            "originalPrice": null,
+            "available": true,
+            "url": "https://www.shwapno.com/purnava-omega-3-enriched-egg-12-pcs-pack-2",
+            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/66377495211595380a8f1b79_Purnava-Omega-3-enriched-Egg12-Pcs-Pack_1.webp"
+          }
+        ]
+      },
+      "cheapestPrice": 280,
+      "cheapestShop": "chaldal"
+    },
+    {
       "key": "eggs||paragon brown|pcs|12",
       "brand": "Paragon Brown",
       "sizeDisplay": "12 pcs",
@@ -2339,50 +2383,6 @@
       },
       "cheapestPrice": 205,
       "cheapestShop": "chaldal"
-    },
-    {
-      "key": "dairy|full_cream_milk|starship|g|500",
-      "brand": "Starship",
-      "sizeDisplay": "500 g",
-      "asGrams": 500,
-      "asMl": null,
-      "asPieces": null,
-      "variety": "full_cream_milk",
-      "category": "Powder Milk",
-      "offers": {
-        "chaldal": [
-          {
-            "shop": "chaldal",
-            "shopProductId": 19871,
-            "productName": "Starship Full Cream Milk Powder 500 gm",
-            "brand": "Starship",
-            "packSize": "500 gm",
-            "category": "Powder Milk",
-            "price": 375,
-            "originalPrice": 375,
-            "available": true,
-            "url": "https://chaldal.com/starship-full-cream-milk-powder-500-gm",
-            "imageUrl": "https://chaldn.com/_mpimage/starship-full-cream-milk-powder-500-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D152337&q=best&v=1"
-          }
-        ],
-        "shwapno": [
-          {
-            "shop": "shwapno",
-            "shopProductId": "2500090",
-            "productName": "Starship Full Cream Milk Power 500gm",
-            "brand": "Starship",
-            "packSize": "500 g",
-            "category": "Dairy",
-            "price": 360,
-            "originalPrice": 375,
-            "available": true,
-            "url": "https://www.shwapno.com/starship-milk-powder-500gm",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/69e9940d596add6a8a87be29_Starship-Full-Cream-Milk-Power-500gm_1.webp"
-          }
-        ]
-      },
-      "cheapestPrice": 360,
-      "cheapestShop": "shwapno"
     },
     {
       "key": "dairy|full_cream_milk|starship|g|1000",
@@ -3529,50 +3529,6 @@
       "cheapestShop": "shwapno"
     },
     {
-      "key": "oil|olive_oil|olio orolio|ml|750|sub0|36899|2401797",
-      "brand": "Olio Orolio",
-      "sizeDisplay": "750 ml",
-      "asGrams": null,
-      "asMl": 750,
-      "asPieces": null,
-      "variety": "olive_oil",
-      "category": "Oil",
-      "offers": {
-        "chaldal": [
-          {
-            "shop": "chaldal",
-            "shopProductId": 36899,
-            "productName": "Olio Orolio Olive Oil 750 ml",
-            "brand": "Olio Orolio",
-            "packSize": "750 ml",
-            "category": "Oil",
-            "price": 1190,
-            "originalPrice": 1190,
-            "available": true,
-            "url": "https://chaldal.com/olio-orolio-olive-oil-750-ml",
-            "imageUrl": "https://chaldn.com/_mpimage/olio-orolio-olive-oil-750-ml?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D122139&q=best&v=1"
-          }
-        ],
-        "shwapno": [
-          {
-            "shop": "shwapno",
-            "shopProductId": "2401797",
-            "productName": "Olio Orolio Olive Oil 750ml",
-            "brand": "Olio Orolio",
-            "packSize": "750 ml",
-            "category": "Oil",
-            "price": 1190,
-            "originalPrice": null,
-            "available": true,
-            "url": "https://www.shwapno.com/Olio-Orolio-Olive-Oil-750ml",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/6952644938648239adbcbea8_Olio-Orolio-Olive-Oil-750ml_1.webp"
-          }
-        ]
-      },
-      "cheapestPrice": 1190,
-      "cheapestShop": "chaldal"
-    },
-    {
       "key": "spices||radhuni chilli|g|200|sub0|4043|2700155",
       "brand": "Radhuni Chilli",
       "sizeDisplay": "200 g",
@@ -3614,6 +3570,50 @@
         ]
       },
       "cheapestPrice": 140,
+      "cheapestShop": "chaldal"
+    },
+    {
+      "key": "oil|olive_oil|olio orolio|ml|750|sub0|36899|2401797",
+      "brand": "Olio Orolio",
+      "sizeDisplay": "750 ml",
+      "asGrams": null,
+      "asMl": 750,
+      "asPieces": null,
+      "variety": "olive_oil",
+      "category": "Oil",
+      "offers": {
+        "chaldal": [
+          {
+            "shop": "chaldal",
+            "shopProductId": 36899,
+            "productName": "Olio Orolio Olive Oil 750 ml",
+            "brand": "Olio Orolio",
+            "packSize": "750 ml",
+            "category": "Oil",
+            "price": 1190,
+            "originalPrice": 1190,
+            "available": true,
+            "url": "https://chaldal.com/olio-orolio-olive-oil-750-ml",
+            "imageUrl": "https://chaldn.com/_mpimage/olio-orolio-olive-oil-750-ml?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D122139&q=best&v=1"
+          }
+        ],
+        "shwapno": [
+          {
+            "shop": "shwapno",
+            "shopProductId": "2401797",
+            "productName": "Olio Orolio Olive Oil 750ml",
+            "brand": "Olio Orolio",
+            "packSize": "750 ml",
+            "category": "Oil",
+            "price": 1190,
+            "originalPrice": null,
+            "available": true,
+            "url": "https://www.shwapno.com/Olio-Orolio-Olive-Oil-750ml",
+            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/6952644938648239adbcbea8_Olio-Orolio-Olive-Oil-750ml_1.webp"
+          }
+        ]
+      },
+      "cheapestPrice": 1190,
       "cheapestShop": "chaldal"
     },
     {
@@ -3946,7 +3946,7 @@
             "originalPrice": 295,
             "available": true,
             "url": "https://chaldal.com/kazikazi-organic-tea-turmeric-infusion-40-pcs-60-gm",
-            "imageUrl": "https://chaldn.com/_mpimage/kazikazi-organic-tea-turmeric-infusion-40-pcs-60-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108235&q=best&v=1&m=400"
+            "imageUrl": "https://chaldn.com/_mpimage/kazikazi-organic-tea-turmeric-infusion-40-pcs-60-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108235&q=best&v=1"
           }
         ],
         "shwapno": [
@@ -4409,50 +4409,6 @@
       "cheapestShop": "chaldal"
     },
     {
-      "key": "llm:ghee|g:200|8913|2500015",
-      "brand": "Aarong Dairy",
-      "sizeDisplay": "200 g",
-      "asGrams": 200,
-      "asMl": null,
-      "asPieces": null,
-      "variety": null,
-      "category": "Ghee",
-      "offers": {
-        "chaldal": [
-          {
-            "shop": "chaldal",
-            "shopProductId": 8913,
-            "productName": "Aarong Dairy Pure Ghee 200 gm",
-            "brand": "Aarong Dairy",
-            "packSize": "200 gm",
-            "category": "Ghee",
-            "price": 390,
-            "originalPrice": 390,
-            "available": true,
-            "url": "https://chaldal.com/aarong-dairy-pure-ghee-200-gm",
-            "imageUrl": "https://chaldn.com/_mpimage/aarong-dairy-pure-ghee-200-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D26926&q=low&v=1"
-          }
-        ],
-        "shwapno": [
-          {
-            "shop": "shwapno",
-            "shopProductId": "2500015",
-            "productName": "Aarong Ghee 200gm",
-            "brand": "Aarong Ghee",
-            "packSize": "200 g",
-            "category": "Ghee",
-            "price": 390,
-            "originalPrice": null,
-            "available": true,
-            "url": "https://www.shwapno.com/aarong-ghee-200gm",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa94ff115075f231ec674f_Aarong-Dairy-Ghee-200gm_1.webp"
-          }
-        ]
-      },
-      "cheapestPrice": 390,
-      "cheapestShop": "chaldal"
-    },
-    {
       "key": "llm:oil|ml:500|36894|2401792",
       "brand": "Olio Orolio",
       "sizeDisplay": "500 ml",
@@ -4497,6 +4453,50 @@
       "cheapestShop": "chaldal"
     },
     {
+      "key": "llm:rice|g:1000|2167|2400679",
+      "brand": "Chashi Aromatic",
+      "sizeDisplay": "1 kg",
+      "asGrams": 1000,
+      "asMl": null,
+      "asPieces": null,
+      "variety": null,
+      "category": "Rice",
+      "offers": {
+        "chaldal": [
+          {
+            "shop": "chaldal",
+            "shopProductId": 2167,
+            "productName": "Chashi Aromatic Chinigura Rice 1 kg",
+            "brand": "Chashi Aromatic",
+            "packSize": "1 kg",
+            "category": "Rice",
+            "price": 190,
+            "originalPrice": 190,
+            "available": true,
+            "url": "https://chaldal.com/chasi-aromatic-rice-chinigura-1-kg-5",
+            "imageUrl": "https://chaldn.com/_mpimage/chashi-aromatic-chinigura-rice-1-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D126657&q=best&v=1"
+          }
+        ],
+        "shwapno": [
+          {
+            "shop": "shwapno",
+            "shopProductId": "2400679",
+            "productName": "Chashi Chinigura Rice 1kg",
+            "brand": "Chashi Chinigura",
+            "packSize": "1 kg",
+            "category": "Rice",
+            "price": 180,
+            "originalPrice": 190,
+            "available": true,
+            "url": "https://www.shwapno.com/chashi-chinigura-rice-1kg",
+            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa94ea115075f231ec5762_Chashi-Chinigura-Rice-1kg_1.webp"
+          }
+        ]
+      },
+      "cheapestPrice": 180,
+      "cheapestShop": "shwapno"
+    },
+    {
       "key": "llm:dairy|g:2500|3843|2200004",
       "brand": "Nestle Nido",
       "sizeDisplay": "2.5 kg",
@@ -4539,6 +4539,50 @@
       },
       "cheapestPrice": 3400,
       "cheapestShop": "chaldal"
+    },
+    {
+      "key": "llm:dairy|g:400|8681|2500772",
+      "brand": "Marks Young",
+      "sizeDisplay": "400 g",
+      "asGrams": 400,
+      "asMl": null,
+      "asPieces": null,
+      "variety": null,
+      "category": "Powder Milk",
+      "offers": {
+        "chaldal": [
+          {
+            "shop": "chaldal",
+            "shopProductId": 8681,
+            "productName": "Marks Young Star (16-40 years) 400 gm",
+            "brand": "Marks Young",
+            "packSize": "400 gm",
+            "category": "Powder Milk",
+            "price": 425,
+            "originalPrice": 425,
+            "available": true,
+            "url": "https://chaldal.com/marks-young-star-16-40years-400g",
+            "imageUrl": "https://chaldn.com/_mpimage/marks-young-star-16-40-years-400-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D130618&q=best&v=1"
+          }
+        ],
+        "shwapno": [
+          {
+            "shop": "shwapno",
+            "shopProductId": "2500772",
+            "productName": "Marks Young Star Full Cream Milk Powder 400gm",
+            "brand": "Marks Young",
+            "packSize": "400 g",
+            "category": "Dairy",
+            "price": 375,
+            "originalPrice": 425,
+            "available": true,
+            "url": "https://www.shwapno.com/marks-young-star-full-cream-milk-powder-400gm",
+            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa9518115075f231ec7cba_Marks-Young-Star-Full-Cream-Milk-Powder-400gm_1.webp"
+          }
+        ]
+      },
+      "cheapestPrice": 375,
+      "cheapestShop": "shwapno"
     },
     {
       "key": "llm:oil|ml:5000|7601|2400078",
@@ -4629,135 +4673,91 @@
       "cheapestShop": "chaldal"
     },
     {
-      "key": "llm:rice|g:1000|2167|2400679",
-      "brand": "Chashi Aromatic",
-      "sizeDisplay": "1 kg",
-      "asGrams": 1000,
+      "key": "llm:dairy|g:500|26143|2501766",
+      "brand": "Nestle Nido",
+      "sizeDisplay": "500 g",
+      "asGrams": 500,
       "asMl": null,
       "asPieces": null,
       "variety": null,
-      "category": "Rice",
+      "category": "Powder Milk",
       "offers": {
         "chaldal": [
           {
             "shop": "chaldal",
-            "shopProductId": 2167,
-            "productName": "Chashi Aromatic Chinigura Rice 1 kg",
-            "brand": "Chashi Aromatic",
-            "packSize": "1 kg",
-            "category": "Rice",
-            "price": 190,
-            "originalPrice": 190,
+            "shopProductId": 26143,
+            "productName": "Nestle Nido Family Choice Milk Powder Pouch 500 Gm",
+            "brand": "Nestle Nido",
+            "packSize": "500 gm",
+            "category": "Powder Milk",
+            "price": 490,
+            "originalPrice": 490,
             "available": true,
-            "url": "https://chaldal.com/chasi-aromatic-rice-chinigura-1-kg-5",
-            "imageUrl": "https://chaldn.com/_mpimage/chashi-aromatic-chinigura-rice-1-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D126657&q=best&v=1"
+            "url": "https://chaldal.com/nestle-nido-family-choice-milk-powder-pouch-500-gm",
+            "imageUrl": "https://chaldn.com/_mpimage/nestle-nido-family-choice-milk-powder-pouch-500-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D166792&q=best&v=1"
           }
         ],
         "shwapno": [
           {
             "shop": "shwapno",
-            "shopProductId": "2400679",
-            "productName": "Chashi Chinigura Rice 1kg",
-            "brand": "Chashi Chinigura",
-            "packSize": "1 kg",
-            "category": "Rice",
-            "price": 180,
-            "originalPrice": 190,
-            "available": true,
-            "url": "https://www.shwapno.com/chashi-chinigura-rice-1kg",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa94ea115075f231ec5762_Chashi-Chinigura-Rice-1kg_1.webp"
-          }
-        ]
-      },
-      "cheapestPrice": 180,
-      "cheapestShop": "shwapno"
-    },
-    {
-      "key": "llm:rice|g:1000|3744|2400569",
-      "brand": "Mehran Basmati",
-      "sizeDisplay": "1 kg",
-      "asGrams": 1000,
-      "asMl": null,
-      "asPieces": null,
-      "variety": null,
-      "category": "Rice",
-      "offers": {
-        "chaldal": [
-          {
-            "shop": "chaldal",
-            "shopProductId": 3744,
-            "productName": "Mehran Basmati Kernel Rice 1 kg",
-            "brand": "Mehran Basmati",
-            "packSize": "1 kg",
-            "category": "Rice",
-            "price": 595,
-            "originalPrice": 595,
-            "available": true,
-            "url": "https://chaldal.com/mehran-basmati-kernel-rice-1-kg",
-            "imageUrl": "https://chaldn.com/_mpimage/mehran-basmati-kernel-rice-1-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D124719&q=best&v=1&m=400"
-          }
-        ],
-        "shwapno": [
-          {
-            "shop": "shwapno",
-            "shopProductId": "2400569",
-            "productName": "Mehran Kernel Basmati Rice 1kg",
-            "brand": "Mehran Kernel",
-            "packSize": "1 kg",
-            "category": "Rice",
-            "price": 585,
-            "originalPrice": 595,
-            "available": true,
-            "url": "https://www.shwapno.com/mehran-bashmati-rice-1kg",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa94e8115075f231ec5650_Mehran-Bashmati-Rice-1kg_1.webp"
-          }
-        ]
-      },
-      "cheapestPrice": 585,
-      "cheapestShop": "shwapno"
-    },
-    {
-      "key": "llm:beverages|g:95|2160|2304456",
-      "brand": "Brooke Bond",
-      "sizeDisplay": "95 g",
-      "asGrams": 95,
-      "asMl": null,
-      "asPieces": null,
-      "variety": null,
-      "category": "Tea",
-      "offers": {
-        "chaldal": [
-          {
-            "shop": "chaldal",
-            "shopProductId": 2160,
-            "productName": "Brooke Bond Taaza Tea Bag 50 pcs 95 gm",
-            "brand": "Brooke Bond",
-            "packSize": "95 gm",
-            "category": "Tea",
-            "price": 95,
-            "originalPrice": 95,
-            "available": true,
-            "url": "https://chaldal.com/brooke-bond-taza-tea-bag-50-pcs-100-gm",
-            "imageUrl": "https://chaldn.com/_mpimage/brooke-bond-taaza-tea-bag-50-pcs-95-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D162456&q=best&v=1"
-          }
-        ],
-        "shwapno": [
-          {
-            "shop": "shwapno",
-            "shopProductId": "2304456",
-            "productName": "Brooke Bond Taaza Black Tea Bags 95gm",
-            "brand": "Brooke Bond",
-            "packSize": "95 g",
-            "category": "Tea",
-            "price": 95,
+            "shopProductId": "2501766",
+            "productName": "Nido Family Choice Milk Powder 500gm",
+            "brand": "Nido Family",
+            "packSize": "500 g",
+            "category": "Dairy",
+            "price": 500,
             "originalPrice": null,
             "available": true,
-            "url": "https://www.shwapno.com/brooke-bond-taaza-black-tea-95g",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/6952638f38648239adbc7eb9_Brooke-Bond-Taaza-Black-Tea-Bags-95gm_1.webp"
+            "url": "https://www.shwapno.com/nido-family-choice-milk-powder-500-gm",
+            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/69b117039d19fa3e6c9adc8c_Nido-Family-Choice-Milk-Powder-500gm_1.webp"
           }
         ]
       },
-      "cheapestPrice": 95,
+      "cheapestPrice": 490,
+      "cheapestShop": "chaldal"
+    },
+    {
+      "key": "llm:dairy|g:1000|35848|2200716",
+      "brand": "Nestle Nido",
+      "sizeDisplay": "1 kg",
+      "asGrams": 1000,
+      "asMl": null,
+      "asPieces": null,
+      "variety": null,
+      "category": "Powder Milk",
+      "offers": {
+        "chaldal": [
+          {
+            "shop": "chaldal",
+            "shopProductId": 35848,
+            "productName": "Nestle Nido Fortigrow Full Cream Milk Powder Tin 1 kg",
+            "brand": "Nestle Nido",
+            "packSize": "1 kg",
+            "category": "Powder Milk",
+            "price": 1400,
+            "originalPrice": 1400,
+            "available": true,
+            "url": "https://chaldal.com/nestle-nido-fortigrow-full-cream-milk-powder-tin-1-kg",
+            "imageUrl": "https://chaldn.com/_mpimage/nestle-nido-fortigrow-full-cream-milk-powder-tin-1-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D131372&q=best&v=1&m=400"
+          }
+        ],
+        "shwapno": [
+          {
+            "shop": "shwapno",
+            "shopProductId": "2200716",
+            "productName": "Nestle Nido Forti Grow Milk Powder 1kg (Tin)",
+            "brand": "Nestle Nido",
+            "packSize": "1 kg",
+            "category": "Dairy",
+            "price": 1500,
+            "originalPrice": null,
+            "available": true,
+            "url": "https://www.shwapno.com/nestle-nido-forti-grow-m-powder-tin-1kg",
+            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa9385115075f231ec4abe_Nestle-Nido-Forti-Grow-Milk-Powder-1kg-Tin_1.webp"
+          }
+        ]
+      },
+      "cheapestPrice": 1400,
       "cheapestShop": "chaldal"
     },
     {
@@ -4805,135 +4805,91 @@
       "cheapestShop": "chaldal"
     },
     {
-      "key": "llm:oil|ml:1000|2410|2400004",
-      "brand": "Radhuni",
-      "sizeDisplay": "1 l",
-      "asGrams": null,
-      "asMl": 1000,
-      "asPieces": null,
-      "variety": null,
-      "category": "Oil",
-      "offers": {
-        "chaldal": [
-          {
-            "shop": "chaldal",
-            "shopProductId": 2410,
-            "productName": "Radhuni Pure Mustard Oil 1 ltr",
-            "brand": "Radhuni",
-            "packSize": "1 ltr",
-            "category": "Oil",
-            "price": 380,
-            "originalPrice": 380,
-            "available": true,
-            "url": "https://chaldal.com/radhuni-pure-mustard-oil-1-ltr",
-            "imageUrl": "https://chaldn.com/_mpimage/radhuni-pure-mustard-oil-1-ltr?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D132549&q=best&v=1"
-          }
-        ],
-        "shwapno": [
-          {
-            "shop": "shwapno",
-            "shopProductId": "2400004",
-            "productName": "Radhuni Mustard Oil 1Ltr.",
-            "brand": "Radhuni Mustard",
-            "packSize": "1 l",
-            "category": "Oil",
-            "price": 340,
-            "originalPrice": 380,
-            "available": true,
-            "url": "https://www.shwapno.com/radhuni-mustard-oil-1liter",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/66813503f077212bd74ef2d0_Radhuni-Mustard-Oil-1L_1.webp"
-          }
-        ]
-      },
-      "cheapestPrice": 340,
-      "cheapestShop": "shwapno"
-    },
-    {
-      "key": "llm:oil|ml:1000|34106|2400369",
-      "brand": "Pusti",
-      "sizeDisplay": "1 l",
-      "asGrams": null,
-      "asMl": 1000,
-      "asPieces": null,
-      "variety": null,
-      "category": "Oil",
-      "offers": {
-        "chaldal": [
-          {
-            "shop": "chaldal",
-            "shopProductId": 34106,
-            "productName": "Pusti Fortified Soyabean Oil 1 ltr",
-            "brand": "Pusti",
-            "packSize": "1 ltr",
-            "category": "Oil",
-            "price": 199,
-            "originalPrice": 199,
-            "available": true,
-            "url": "https://chaldal.com/pusti-fortified-soyabean-oil-1-ltr",
-            "imageUrl": "https://chaldn.com/_mpimage/pusti-fortified-soyabean-oil-1-ltr?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D132433&q=best&v=1"
-          }
-        ],
-        "shwapno": [
-          {
-            "shop": "shwapno",
-            "shopProductId": "2400369",
-            "productName": "Pusti Soyabean Oil 1Ltr.",
-            "brand": "Pusti Soyabean",
-            "packSize": "1 l",
-            "category": "Oil",
-            "price": 199,
-            "originalPrice": null,
-            "available": true,
-            "url": "https://www.shwapno.com/pusti-soyabean-oil-1liter",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/66813511f077212bd74ef34b_Pusti-Soyabean-Oil-1L_1.webp"
-          }
-        ]
-      },
-      "cheapestPrice": 199,
-      "cheapestShop": "chaldal"
-    },
-    {
-      "key": "llm:dairy|g:1000|35848|2200716",
-      "brand": "Nestle Nido",
-      "sizeDisplay": "1 kg",
-      "asGrams": 1000,
+      "key": "llm:beverages|g:60|2265|2301012",
+      "brand": "Kazi",
+      "sizeDisplay": "60 g",
+      "asGrams": 60,
       "asMl": null,
       "asPieces": null,
       "variety": null,
-      "category": "Powder Milk",
+      "category": "Tea",
       "offers": {
         "chaldal": [
           {
             "shop": "chaldal",
-            "shopProductId": 35848,
-            "productName": "Nestle Nido Fortigrow Full Cream Milk Powder Tin 1 kg",
-            "brand": "Nestle Nido",
-            "packSize": "1 kg",
-            "category": "Powder Milk",
-            "price": 1400,
-            "originalPrice": 1400,
+            "shopProductId": 2265,
+            "productName": "Kazi & Kazi Organic Ginger Tea 40 pcs 60 gm",
+            "brand": "Kazi",
+            "packSize": "60 gm",
+            "category": "Tea",
+            "price": 215,
+            "originalPrice": 215,
             "available": true,
-            "url": "https://chaldal.com/nestle-nido-fortigrow-full-cream-milk-powder-tin-1-kg",
-            "imageUrl": "https://chaldn.com/_mpimage/nestle-nido-fortigrow-full-cream-milk-powder-tin-1-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D131372&q=best&v=1&m=400"
+            "url": "https://chaldal.com/kazi-kazi-organic-ginger-tea-40-pcs-60-gm",
+            "imageUrl": "https://chaldn.com/_mpimage/kazi-kazi-organic-ginger-tea-40-pcs-60-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108203&q=best&v=1&m=400"
           }
         ],
         "shwapno": [
           {
             "shop": "shwapno",
-            "shopProductId": "2200716",
-            "productName": "Nestle Nido Forti Grow Milk Powder 1kg (Tin)",
-            "brand": "Nestle Nido",
-            "packSize": "1 kg",
-            "category": "Dairy",
-            "price": 1500,
+            "shopProductId": "2301012",
+            "productName": "Kazi & Kazi Ginger Tea 60gm (Box)",
+            "brand": "Kazi",
+            "packSize": "60 g",
+            "category": "Tea",
+            "price": 225,
             "originalPrice": null,
             "available": true,
-            "url": "https://www.shwapno.com/nestle-nido-forti-grow-m-powder-tin-1kg",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa9385115075f231ec4abe_Nestle-Nido-Forti-Grow-Milk-Powder-1kg-Tin_1.webp"
+            "url": "https://www.shwapno.com/kazi-and-kazi-ginger-tea-box-60-gm",
+            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa93a4115075f231ec4c4e_Kazi-Kazi-Ginger-Tea-60gm-Box_1.webp"
           }
         ]
       },
-      "cheapestPrice": 1400,
+      "cheapestPrice": 215,
+      "cheapestShop": "chaldal"
+    },
+    {
+      "key": "llm:beverages|g:15|24858|2304491",
+      "brand": "AMA Coffee",
+      "sizeDisplay": "15 g",
+      "asGrams": 15,
+      "asMl": null,
+      "asPieces": null,
+      "variety": null,
+      "category": "Tea & Coffee",
+      "offers": {
+        "chaldal": [
+          {
+            "shop": "chaldal",
+            "shopProductId": 24858,
+            "productName": "AMA Coffee 3 In 1 15 gm",
+            "brand": "AMA Coffee",
+            "packSize": "15 gm",
+            "category": "Tea & Coffee",
+            "price": 10,
+            "originalPrice": 10,
+            "available": true,
+            "url": "https://chaldal.com/ama-coffee-3-in-1-15-gm",
+            "imageUrl": "https://chaldn.com/_mpimage/ama-coffee-3-in-1-15-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D127328&q=best&v=1"
+          }
+        ],
+        "shwapno": [
+          {
+            "shop": "shwapno",
+            "shopProductId": "2304491",
+            "productName": "AMA Brazilian Coffee 15g (Sugar Free)",
+            "brand": "AMA Brazilian",
+            "packSize": "15 g",
+            "category": "Coffee",
+            "price": 15,
+            "originalPrice": null,
+            "available": true,
+            "url": "https://www.shwapno.com/ama-brazilian-coffee-15gsugar-free",
+            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/67dc0c2803256a906b022a2e_AMA-Brazilian-Coffee-15gSugar-Free_1.webp"
+          }
+        ]
+      },
+      "cheapestPrice": 10,
       "cheapestShop": "chaldal"
     },
     {
@@ -5066,50 +5022,6 @@
         ]
       },
       "cheapestPrice": 250,
-      "cheapestShop": "chaldal"
-    },
-    {
-      "key": "llm:beverages|g:60|2265|2301012",
-      "brand": "Kazi",
-      "sizeDisplay": "60 g",
-      "asGrams": 60,
-      "asMl": null,
-      "asPieces": null,
-      "variety": null,
-      "category": "Tea",
-      "offers": {
-        "chaldal": [
-          {
-            "shop": "chaldal",
-            "shopProductId": 2265,
-            "productName": "Kazi & Kazi Organic Ginger Tea 40 pcs 60 gm",
-            "brand": "Kazi",
-            "packSize": "60 gm",
-            "category": "Tea",
-            "price": 215,
-            "originalPrice": 215,
-            "available": true,
-            "url": "https://chaldal.com/kazi-kazi-organic-ginger-tea-40-pcs-60-gm",
-            "imageUrl": "https://chaldn.com/_mpimage/kazi-kazi-organic-ginger-tea-40-pcs-60-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108203&q=best&v=1&m=400"
-          }
-        ],
-        "shwapno": [
-          {
-            "shop": "shwapno",
-            "shopProductId": "2301012",
-            "productName": "Kazi & Kazi Ginger Tea 60gm (Box)",
-            "brand": "Kazi",
-            "packSize": "60 g",
-            "category": "Tea",
-            "price": 225,
-            "originalPrice": null,
-            "available": true,
-            "url": "https://www.shwapno.com/kazi-and-kazi-ginger-tea-box-60-gm",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa93a4115075f231ec4c4e_Kazi-Kazi-Ginger-Tea-60gm-Box_1.webp"
-          }
-        ]
-      },
-      "cheapestPrice": 215,
       "cheapestShop": "chaldal"
     },
     {
@@ -5333,50 +5245,6 @@
       "cheapestShop": "chaldal"
     },
     {
-      "key": "llm:beverages|g:200|23343|2303286",
-      "brand": "Nestle Nescafe",
-      "sizeDisplay": "200 g",
-      "asGrams": 200,
-      "asMl": null,
-      "asPieces": null,
-      "variety": null,
-      "category": "Tea & Coffee",
-      "offers": {
-        "chaldal": [
-          {
-            "shop": "chaldal",
-            "shopProductId": 23343,
-            "productName": "Nestle Nescafe Classic Instant Coffee Pouch Pack 200 gm",
-            "brand": "Nestle Nescafe",
-            "packSize": "200 gm",
-            "category": "Tea & Coffee",
-            "price": 950,
-            "originalPrice": 950,
-            "available": true,
-            "url": "https://chaldal.com/nestle-nescafe-classic-instant-coffee-pouch-pack-200-gm",
-            "imageUrl": "https://chaldn.com/_mpimage/nestle-nescafe-classic-instant-coffee-pouch-pack-200-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D120413&q=best&v=1"
-          }
-        ],
-        "shwapno": [
-          {
-            "shop": "shwapno",
-            "shopProductId": "2303286",
-            "productName": "Nescafe Classic Coffee 200gm (Pouch)",
-            "brand": "Nescafe Classic",
-            "packSize": "200 g",
-            "category": "Coffee",
-            "price": 950,
-            "originalPrice": null,
-            "available": true,
-            "url": "https://www.shwapno.com/nescafe-classic-coffee-200gm-pouch",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa93b5115075f231ec4d26_Nescafe-Classic-Coffee-200gm-Pouch_1.webp"
-          }
-        ]
-      },
-      "cheapestPrice": 950,
-      "cheapestShop": "chaldal"
-    },
-    {
       "key": "llm:spices|g:50|18534|2702878",
       "brand": "Black Pepper",
       "sizeDisplay": "50 g",
@@ -5418,50 +5286,6 @@
         ]
       },
       "cheapestPrice": 75,
-      "cheapestShop": "chaldal"
-    },
-    {
-      "key": "llm:spices|g:50|18536|2702868",
-      "brand": "White Pepper",
-      "sizeDisplay": "50 g",
-      "asGrams": 50,
-      "asMl": null,
-      "asPieces": null,
-      "variety": null,
-      "category": "Spices",
-      "offers": {
-        "chaldal": [
-          {
-            "shop": "chaldal",
-            "shopProductId": 18536,
-            "productName": "White Pepper Whole 50 gm",
-            "brand": "White Pepper",
-            "packSize": "50 gm",
-            "category": "Spices",
-            "price": 99,
-            "originalPrice": 150,
-            "available": true,
-            "url": "https://chaldal.com/white-pepper-whole-50-gm-2",
-            "imageUrl": "https://chaldn.com/_mpimage/white-pepper-whole-50-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D184757&q=best&v=1"
-          }
-        ],
-        "shwapno": [
-          {
-            "shop": "shwapno",
-            "shopProductId": "2702868",
-            "productName": "Haiko White Papper 50gm",
-            "brand": "Haiko White",
-            "packSize": "50 g",
-            "category": "Spices",
-            "price": 128,
-            "originalPrice": 160,
-            "available": true,
-            "url": "https://www.shwapno.com/haiko-white-papper-50g",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/default-product.webp"
-          }
-        ]
-      },
-      "cheapestPrice": 99,
       "cheapestShop": "chaldal"
     },
     {
@@ -5507,94 +5331,6 @@
       },
       "cheapestPrice": 99,
       "cheapestShop": "chaldal"
-    },
-    {
-      "key": "llm:spices|g:100|3369|2700133",
-      "brand": "Cumin",
-      "sizeDisplay": "100 g",
-      "asGrams": 100,
-      "asMl": null,
-      "asPieces": null,
-      "variety": null,
-      "category": "Spices",
-      "offers": {
-        "chaldal": [
-          {
-            "shop": "chaldal",
-            "shopProductId": 3369,
-            "productName": "Cumin (Jira) 100 gm",
-            "brand": "Cumin",
-            "packSize": "100 gm",
-            "category": "Spices",
-            "price": 79,
-            "originalPrice": 90,
-            "available": true,
-            "url": "https://chaldal.com/cumin-seed-jira-100-gm",
-            "imageUrl": "https://chaldn.com/_mpimage/cumin-jira-100-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D183697&q=best&v=1"
-          }
-        ],
-        "shwapno": [
-          {
-            "shop": "shwapno",
-            "shopProductId": "2700133",
-            "productName": "Pure Cumin Powder 100gm",
-            "brand": "Pure Cumin",
-            "packSize": "100 g",
-            "category": "Spices",
-            "price": 160,
-            "originalPrice": null,
-            "available": true,
-            "url": "https://www.shwapno.com/aci-pure-cumin-jeera-powder-100gm",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa95bd115075f231ecc97e_ACI-Pure-Cumin-Jeera-Powder-100gm_1.webp"
-          }
-        ]
-      },
-      "cheapestPrice": 79,
-      "cheapestShop": "chaldal"
-    },
-    {
-      "key": "llm:spices|g:100|57260|2703857",
-      "brand": "Ramisa Tokma",
-      "sizeDisplay": "100 g",
-      "asGrams": 100,
-      "asMl": null,
-      "asPieces": null,
-      "variety": null,
-      "category": "Spices",
-      "offers": {
-        "chaldal": [
-          {
-            "shop": "chaldal",
-            "shopProductId": 57260,
-            "productName": "Ramisa Tokma 100 gm",
-            "brand": "Ramisa Tokma",
-            "packSize": "100 gm",
-            "category": "Spices",
-            "price": 60,
-            "originalPrice": 60,
-            "available": true,
-            "url": "https://chaldal.com/ramisa-tokma-100-gm",
-            "imageUrl": "https://chaldn.com/_mpimage/ramisa-tokma-100-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D185387&q=best&v=1"
-          }
-        ],
-        "shwapno": [
-          {
-            "shop": "shwapno",
-            "shopProductId": "2703857",
-            "productName": "Shwapno Tokma 100gm (Pouch)",
-            "brand": "Shwapno Tokma",
-            "packSize": "100 g",
-            "category": "Spices",
-            "price": 52,
-            "originalPrice": null,
-            "available": true,
-            "url": "https://www.shwapno.com/shwapno-tokmapouch-100g-2",
-            "imageUrl": "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa9610115075f231eccdc3_Shwapno-Tokma-100gm-Pouch_1.webp"
-          }
-        ]
-      },
-      "cheapestPrice": 52,
-      "cheapestShop": "shwapno"
     }
   ]
 }
