@@ -31,6 +31,7 @@ export default async function Page() {
   const categories = Array.from(new Set(snapshot.products.map((p) => p.category))).sort();
   const totalChaldal = snapshot.shops.chaldal?.productsFound ?? 0;
   const totalShwapno = snapshot.shops.shwapno?.productsFound ?? 0;
+  const totalPandamart = snapshot.shops.pandamart?.productsFound ?? 0;
 
   return (
     <main className="mx-auto max-w-7xl px-6 py-8">
@@ -46,6 +47,10 @@ export default async function Page() {
               Shwapno
             </span>{" "}
             <span className="font-medium">{totalShwapno.toLocaleString()}</span> products ·{" "}
+            <span className="inline-block rounded bg-pandamart px-1.5 py-0.5 text-xs font-medium text-white">
+              Pandamart
+            </span>{" "}
+            <span className="font-medium">{totalPandamart.toLocaleString()}</span> products ·{" "}
             <span className="font-medium">{groups.length.toLocaleString()}</span> cross-shop matches
           </p>
           <p className="mt-0.5 text-xs text-neutral-500">

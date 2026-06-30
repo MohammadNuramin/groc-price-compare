@@ -5,7 +5,7 @@ import type { RawProduct } from "@/lib/crawl/types";
 import type { MatchGroup } from "@/lib/crawl/match";
 
 type Tab = "matches" | "all";
-type ShopFilter = "all" | "chaldal" | "shwapno";
+type ShopFilter = "all" | "chaldal" | "shwapno" | "pandamart";
 
 // When served behind a stripping path-proxy (e.g. Tailscale Funnel /groc),
 // API calls must include the prefix so they re-enter through the same mount.
@@ -133,6 +133,7 @@ export function BrowseView({ categories, initialMatchCount }: Props) {
             <option value="all">All shops</option>
             <option value="chaldal">Chaldal only</option>
             <option value="shwapno">Shwapno only</option>
+            <option value="pandamart">Pandamart only</option>
           </select>
         )}
       </div>
@@ -187,6 +188,7 @@ function MatchesTable({ groups }: { groups: MatchGroup[] }) {
             <th className="px-4 py-3">Brand · Size · Category</th>
             <th className="px-4 py-3 text-chaldal">Chaldal</th>
             <th className="px-4 py-3 text-shwapno">Shwapno</th>
+            <th className="px-4 py-3 text-pandamart">Pandamart</th>
             <th className="px-4 py-3">Price gap</th>
           </tr>
         </thead>
@@ -194,8 +196,9 @@ function MatchesTable({ groups }: { groups: MatchGroup[] }) {
           {groups.map((g) => {
             const cOffers = g.offers.chaldal ?? [];
             const sOffers = g.offers.shwapno ?? [];
-            const isMultiSku = cOffers.length > 1 || sOffers.length > 1;
-            const allOffers = ([...cOffers, ...sOffers]).filter(
+            const pOffers = g.offers.pandamart ?? [];
+            const isMultiSku = cOffers.length > 1 || sOffers.length > 1 || pOffers.length > 1;
+            const allOffers = ([...cOffers, ...sOffers, ...pOffers]).filter(
               (o) => typeof o.price === "number",
             );
             const prices = allOffers.map((o) => o.price as number);
@@ -211,8 +214,9 @@ function MatchesTable({ groups }: { groups: MatchGroup[] }) {
                   <div className="text-xs text-neutral-600">{g.sizeDisplay}</div>
                   <div className="text-xs text-neutral-500">{g.category}</div>
                 </td>
-                <OfferCell offers={g.offers.chaldal ?? []} minPrice={min} maxPrice={max} />
-                <OfferCell offers={g.offers.shwapno ?? []} minPrice={min} maxPrice={max} />
+                <OfferCell offers={cOffers} minPrice={min} maxPrice={max} />
+                <OfferCell offers={sOffers} minPrice={min} maxPrice={max} />
+                <OfferCell offers={pOffers} minPrice={min} maxPrice={max} />
                 <td className="px-4 py-3 align-top text-sm">
                   {isMultiSku ? (
                     <span
