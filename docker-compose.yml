@@ -4,7 +4,8 @@ services:
     image: groc-price-compare:latest
     container_name: groc-web
     ports:
-      - "3000:3000"
+      # Host port configurable (serverpc0 already uses 3000 for open-webui); container stays 3000
+      - "${WEB_PORT:-3000}:3000"
     volumes:
       - .:/app
       - /app/node_modules
