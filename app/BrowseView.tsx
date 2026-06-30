@@ -240,6 +240,23 @@ function MatchesTable({ groups }: { groups: MatchGroup[] }) {
   );
 }
 
+function Thumb({ src, alt }: { src: string | null; alt: string }) {
+  if (!src) return <div className="h-11 w-11 flex-shrink-0 rounded border border-neutral-100 bg-neutral-50" />;
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      referrerPolicy="no-referrer"
+      onError={(e) => {
+        e.currentTarget.style.visibility = "hidden";
+      }}
+      className="h-11 w-11 flex-shrink-0 rounded border border-neutral-100 bg-white object-contain"
+    />
+  );
+}
+
 function OfferCell({
   offers,
   minPrice,
@@ -262,39 +279,42 @@ function OfferCell({
       {offers.map((o, i) => {
         const isMin = typeof o.price === "number" && o.price === minPrice;
         return (
-          <div key={i} className={i > 0 ? "mt-2 border-t border-neutral-100 pt-2" : ""}>
-            <div className="flex items-baseline gap-2">
-              <span
-                className={`text-base font-semibold ${isMin && !priceTied ? "text-emerald-700" : "text-neutral-900"}`}
+          <div key={i} className={`flex gap-2 ${i > 0 ? "mt-2 border-t border-neutral-100 pt-2" : ""}`}>
+            <Thumb src={o.imageUrl} alt={o.productName} />
+            <div className="min-w-0 flex-1">
+              <div className="flex items-baseline gap-2">
+                <span
+                  className={`text-base font-semibold ${isMin && !priceTied ? "text-emerald-700" : "text-neutral-900"}`}
+                >
+                  {bdt(o.price)}
+                </span>
+                {typeof o.originalPrice === "number" && o.originalPrice > (o.price ?? 0) && (
+                  <span className="text-xs text-neutral-400 line-through">{bdt(o.originalPrice)}</span>
+                )}
+                {isMin && offers.length === 1 && priceTied && (
+                  <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-neutral-600">
+                    Same price
+                  </span>
+                )}
+                {isMin && offers.length === 1 && !priceTied && (
+                  <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-emerald-700">
+                    Lowest
+                  </span>
+                )}
+              </div>
+              <a
+                href={o.url ?? "#"}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-0.5 line-clamp-2 block text-xs text-neutral-500 hover:text-neutral-700 hover:underline"
+                title={o.productName}
               >
-                {bdt(o.price)}
-              </span>
-              {typeof o.originalPrice === "number" && o.originalPrice > (o.price ?? 0) && (
-                <span className="text-xs text-neutral-400 line-through">{bdt(o.originalPrice)}</span>
-              )}
-              {isMin && offers.length === 1 && priceTied && (
-                <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-neutral-600">
-                  Same price
-                </span>
-              )}
-              {isMin && offers.length === 1 && !priceTied && (
-                <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-emerald-700">
-                  Lowest
-                </span>
+                {o.productName}
+              </a>
+              {!o.available && (
+                <div className="mt-0.5 text-[10px] font-medium uppercase text-amber-600">Out of stock</div>
               )}
             </div>
-            <a
-              href={o.url ?? "#"}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-0.5 line-clamp-2 block text-xs text-neutral-500 hover:text-neutral-700 hover:underline"
-              title={o.productName}
-            >
-              {o.productName}
-            </a>
-            {!o.available && (
-              <div className="mt-0.5 text-[10px] font-medium uppercase text-amber-600">Out of stock</div>
-            )}
           </div>
         );
       })}
@@ -332,18 +352,23 @@ function ProductsTable({ products }: { products: RawProduct[] }) {
                 </span>
               </td>
               <td className="px-4 py-3 align-top">
-                <a
-                  href={p.url ?? "#"}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-medium text-neutral-900 hover:underline"
-                  title={p.productName}
-                >
-                  {p.productName}
-                </a>
-                {!p.available && (
-                  <div className="mt-0.5 text-[10px] font-medium uppercase text-amber-600">Out of stock</div>
-                )}
+                <div className="flex items-start gap-2">
+                  <Thumb src={p.imageUrl} alt={p.productName} />
+                  <div className="min-w-0">
+                    <a
+                      href={p.url ?? "#"}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-medium text-neutral-900 hover:underline"
+                      title={p.productName}
+                    >
+                      {p.productName}
+                    </a>
+                    {!p.available && (
+                      <div className="mt-0.5 text-[10px] font-medium uppercase text-amber-600">Out of stock</div>
+                    )}
+                  </div>
+                </div>
               </td>
               <td className="px-4 py-3 align-top text-xs text-neutral-700">{p.brand ?? "—"}</td>
               <td className="px-4 py-3 align-top text-xs text-neutral-600">{p.packSize ?? "—"}</td>
