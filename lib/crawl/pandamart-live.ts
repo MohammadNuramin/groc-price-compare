@@ -19,11 +19,20 @@ import { extractBrand, extractSizeFromName } from "./extract";
 const ENDPOINT = process.env.PANDAMART_GRAPHQL ?? "https://bd.fd-api.com/api/v5/graphql";
 const GLOBAL_ENTITY = process.env.PANDAMART_ENTITY ?? "FP_BD";
 const LOCALE = process.env.PANDAMART_LOCALE ?? "en_BD";
-// One or more darkstore vendor codes (from the /darkstore/<code>/... URL).
-const VENDORS = (process.env.PANDAMART_VENDORS ?? "vbpl")
+// One or more darkstore vendors. Each entry is "code" or "code:slug", where
+// slug is the store path segment from the /darkstore/<code>/<slug> URL — it is
+// required to build working product links (.../<slug>/product/<id>). Defaults
+// to the Gulshan-Banani store (vbpl).
+const VENDOR_SPECS = (process.env.PANDAMART_VENDORS ?? "vbpl:pandamart-gulshan-banani")
   .split(",")
   .map((s) => s.trim())
-  .filter(Boolean);
+  .filter(Boolean)
+  .map((spec) => {
+    const idx = spec.indexOf(":");
+    return idx === -1
+      ? { code: spec, slug: spec }
+      : { code: spec.slice(0, idx), slug: spec.slice(idx + 1) };
+  });
 const CONCURRENCY = Math.max(1, Number(process.env.PANDAMART_CONCURRENCY ?? "3"));
 const REQUEST_DELAY_MS = Number(process.env.PANDAMART_DELAY_MS ?? "90");
 const UA =
@@ -166,7 +175,12 @@ async function fetchCategoryProducts(vendorCode: string, categoryId: string): Pr
   return out;
 }
 
-function toRawProduct(p: PFProduct, category: string, vendorCode: string): RawProduct | null {
+function toRawProduct(
+  p: PFProduct,
+  category: string,
+  vendorCode: string,
+  slug: string,
+): RawProduct | null {
   const id = p.productID ?? p.globalCatalogID;
   if (!id || !p.name) return null;
   const price = typeof p.price === "number" && p.price > 0 ? p.price : null;
@@ -182,7 +196,8 @@ function toRawProduct(p: PFProduct, category: string, vendorCode: string): RawPr
     price,
     originalPrice: original,
     available: p.isAvailable !== false,
-    url: `https://www.foodpanda.com.bd/darkstore/${vendorCode}/?productID=${id}`,
+    // Working product deep-link: /darkstore/<code>/<slug>/product/<productID>
+    url: `https://www.foodpanda.com.bd/darkstore/${vendorCode}/${slug}/product/${id}`,
     imageUrl: Array.isArray(p.urls) && p.urls.length > 0 ? p.urls[0] : null,
   };
 }
@@ -207,13 +222,13 @@ export async function crawlPandamartLive(
   const seen = new Map<string, RawProduct>();
   let categoriesCrawled = 0;
 
-  for (const vendor of VENDORS) {
-    onProgress?.(`Pandamart (live) — ${vendor}: fetching category tree …`);
-    const cats = await fetchCategoryTree(vendor);
+  for (const { code, slug } of VENDOR_SPECS) {
+    onProgress?.(`Pandamart (live) — ${code}: fetching category tree …`);
+    const cats = await fetchCategoryTree(code);
     if (cats.length === 0) {
-      throw new Error(`Pandamart live: no categories for vendor ${vendor} (blocked or bad code?)`);
+      throw new Error(`Pandamart live: no categories for vendor ${code} (blocked or bad code?)`);
     }
-    onProgress?.(`  ${cats.length} categories for ${vendor}`);
+    onProgress?.(`  ${cats.length} categories for ${code}`);
 
     for (const cat of cats) {
       const before = seen.size;
@@ -221,7 +236,7 @@ export async function crawlPandamartLive(
       await pool(nodeIds, CONCURRENCY, async (nodeId) => {
         let items: PFProduct[] = [];
         try {
-          items = await fetchCategoryProducts(vendor, nodeId);
+          items = await fetchCategoryProducts(code, nodeId);
         } catch {
           return; // node failed after retries; skip
         }
@@ -230,7 +245,7 @@ export async function crawlPandamartLive(
           if (!id) continue;
           const key = `pandamart:${id}`;
           if (!seen.has(key)) {
-            const rp = toRawProduct(it, cat.name, vendor);
+            const rp = toRawProduct(it, cat.name, code, slug);
             if (rp) seen.set(key, rp);
           }
         }
