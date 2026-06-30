@@ -241,7 +241,7 @@ function MatchesTable({ groups }: { groups: MatchGroup[] }) {
 }
 
 function Thumb({ src, alt }: { src: string | null; alt: string }) {
-  if (!src) return <div className="h-11 w-11 flex-shrink-0 rounded border border-neutral-100 bg-neutral-50" />;
+  if (!src) return <div className="h-16 w-16 flex-shrink-0 rounded border border-neutral-100 bg-neutral-50" />;
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
@@ -252,7 +252,7 @@ function Thumb({ src, alt }: { src: string | null; alt: string }) {
       onError={(e) => {
         e.currentTarget.style.visibility = "hidden";
       }}
-      className="h-11 w-11 flex-shrink-0 rounded border border-neutral-100 bg-white object-contain"
+      className="h-16 w-16 flex-shrink-0 rounded border border-neutral-100 bg-white object-contain"
     />
   );
 }
