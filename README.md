@@ -1,6 +1,6 @@
 # BD Grocery Price Compare
 
-A full-website price comparison tool for Bangladeshi online grocery shops. Crawls the entire catalog of [Chaldal](https://chaldal.com/) and [Shwapno](https://www.shwapno.com/), then uses an LLM (Gemma 4 8B Thinking) to find cross-shop SKU matches and split ambiguous brand+size groups into clean apples-to-apples comparisons.
+A full-website price comparison tool for Bangladeshi online grocery shops. Crawls the entire catalog of [Chaldal](https://chaldal.com/) and [Shwapno](https://www.shwapno.com/), then uses an LLM (Gemma 4 12B, QAT w4a16, served via vLLM) to find cross-shop SKU matches and split ambiguous brand+size groups into clean apples-to-apples comparisons.
 
 ## Features
 
@@ -30,7 +30,7 @@ A full-website price comparison tool for Bangladeshi online grocery shops. Crawl
         ▼                           ▼
 ┌──────────────┐           ┌─────────────────┐
 │ Deterministic│           │  LLM matcher    │
-│  bucketing   │           │ Gemma 4 8B-Th.  │
+│  bucketing   │           │ Gemma 4 12B     │
 │ brand+size+  │           │ vLLM endpoint   │
 │   variety    │◄──────────│  16 workers     │
 └──────┬───────┘           └────────┬────────┘
@@ -56,7 +56,7 @@ A full-website price comparison tool for Bangladeshi online grocery shops. Crawl
 - **Next.js 15** (App Router, TypeScript, Tailwind)
 - **Node 22** (built-in `fetch`)
 - **Docker Compose** — `web` service (Next.js dev server) and a one-shot tool runner for crawl/match commands
-- **vLLM** — serves Gemma 4 8B Thinking on an external OpenAI-compatible endpoint (configurable via `LLM_BASE_URL`)
+- **vLLM** — serves Gemma 4 12B (QAT w4a16) on an external OpenAI-compatible endpoint (configurable via `LLM_BASE_URL`)
 - No headless browser, no Playwright dependency — pure HTTP + JSON APIs for both shops
 
 ## Setup
@@ -69,7 +69,7 @@ cd groc-price-compare
 docker compose build web
 ```
 
-Configure the LLM endpoint in `docker-compose.yml` (or pass via `-e` flags). Defaults assume a vLLM server at `http://localhost:8200/v1` serving a model named `gemma-4-8b-thinking`.
+Configure the LLM endpoint in `docker-compose.yml` (or pass via `-e` flags). Defaults point to the vLLM server on **serverpc1** at `http://100.66.130.112:8201/v1` (Tailscale) serving `google/gemma-4-12B-it-qat-w4a16-ct`. serverpc0 reaches it over Tailscale since the two hosts are on different subnets.
 
 ## Usage
 
@@ -78,11 +78,8 @@ Configure the LLM endpoint in `docker-compose.yml` (or pass via `-e` flags). Def
 docker compose run --rm web npm run crawl
 
 # 2. Match products across shops (~4–5 minutes with LLM)
-docker compose run --rm \
-    -e LLM_BASE_URL=http://your-llm:8200/v1 \
-    -e LLM_MODEL=gemma-4-8b-thinking \
-    -e LLM_CONCURRENCY=16 \
-    web npm run match
+#    Defaults point at the 12B Gemma vLLM on serverpc1 (Tailscale); override with -e if needed.
+docker compose run --rm web npm run match
 
 # 3. Start the web UI
 docker compose up -d web
@@ -97,8 +94,8 @@ Outputs (gitignored):
 
 | Var | Default | Description |
 |---|---|---|
-| `LLM_BASE_URL` | `http://localhost:8200/v1` | OpenAI-compatible LLM endpoint |
-| `LLM_MODEL` | `gemma-4-8b-thinking` | Model name as served by the LLM |
+| `LLM_BASE_URL` | `http://100.66.130.112:8201/v1` | OpenAI-compatible LLM endpoint (serverpc1 vLLM, Tailscale) |
+| `LLM_MODEL` | `google/gemma-4-12B-it-qat-w4a16-ct` | Model name as served by the LLM |
 | `LLM_CONCURRENCY` | `16` | Parallel LLM workers |
 | `LLM_TIMEOUT_MS` | `60000` | Per-request timeout |
 | `LLM_MAX_TOKENS` | `2048` | Max tokens per LLM call |

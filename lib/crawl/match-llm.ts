@@ -2,8 +2,8 @@ import { normalizeSize } from "./extract";
 import type { MatchGroup } from "./match";
 import type { RawProduct } from "./types";
 
-const LLM_BASE_URL = process.env.LLM_BASE_URL ?? "http://localhost:8200/v1";
-const LLM_MODEL = process.env.LLM_MODEL ?? "gemma-4-8b-thinking";
+const LLM_BASE_URL = process.env.LLM_BASE_URL ?? "http://100.66.130.112:8201/v1";
+const LLM_MODEL = process.env.LLM_MODEL ?? "google/gemma-4-12B-it-qat-w4a16-ct";
 const LLM_CONCURRENCY = Number(process.env.LLM_CONCURRENCY ?? "16");
 const LLM_TIMEOUT_MS = Number(process.env.LLM_TIMEOUT_MS ?? "60000");
 const LLM_MAX_TOKENS = Number(process.env.LLM_MAX_TOKENS ?? "2048");

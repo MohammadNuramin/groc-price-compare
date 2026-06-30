@@ -63,8 +63,8 @@ async function main() {
 
   const out: MatchesSnapshot = {
     matchedAt: new Date().toISOString(),
-    llmModel: process.env.LLM_MODEL ?? "gemma-4-8b",
-    llmBaseUrl: process.env.LLM_BASE_URL ?? "http://localhost:8200/v1",
+    llmModel: process.env.LLM_MODEL ?? "google/gemma-4-12B-it-qat-w4a16-ct",
+    llmBaseUrl: process.env.LLM_BASE_URL ?? "http://100.66.130.112:8201/v1",
     totals: {
       deterministic: detGroups.length,
       llm: filteredLlm.length,
