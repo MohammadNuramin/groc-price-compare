@@ -99,7 +99,10 @@ Outputs (gitignored):
 | `LLM_CONCURRENCY` | `16` | Parallel LLM workers |
 | `LLM_TIMEOUT_MS` | `60000` | Per-request timeout |
 | `LLM_MAX_TOKENS` | `2048` | Max tokens per LLM call |
-| `SKIP_PANDAMART` | `1` | Skip the Pandamart/Foodpanda scraper (PerimeterX-blocked from datacenter IPs) |
+| `PANDAMART_MODE` | `live` | `live` (foodpanda GraphQL — needs a residential IP), `wayback` (Internet Archive, stale), or `off` |
+| `PANDAMART_VENDORS` | `vbpl` | Comma-separated darkstore vendor codes (from the `/darkstore/<code>/...` URL) |
+| `PANDAMART_CONCURRENCY` | `3` | Parallel category requests (keep low to avoid Cloudflare rate-limiting) |
+| `SKIP_PANDAMART` | `1` | Skip the *legacy* per-item Pandamart scraper (`lib/scrapers/`) |
 | `SCRAPE_CONCURRENCY` | `8` | Parallel workers for the legacy per-item scraper |
 
 ## Matching approach
@@ -144,7 +147,7 @@ Brand and pack size are extracted from product names heuristically (first capita
 
 ## Caveats and known issues
 
-- **Pandamart (Foodpanda) is excluded** by default. Their CDN uses PerimeterX with a "Press & Hold" challenge that blocks datacenter IPs regardless of TLS fingerprint or browser stealth. CloakBrowser support is wired (`lib/scrapers/pandamart.ts`) and works if you supply a residential proxy via `CLOAKBROWSER_PROXY`, but without one Pandamart will always serve a captcha page.
+- **Pandamart (Foodpanda) needs a residential IP.** Foodpanda's *website* is behind PerimeterX, which serves a "Press & Hold" / "Access denied" challenge to datacenter IPs. But the catalog itself comes from the foodpanda GraphQL API (`bd.fd-api.com/api/v5/graphql`, ops `getShopDetails` → `getProductsByCategoryList`), which needs **no auth token** — only self-generated `perseus-*` ids. From a residential IP (the deployment host), `npm run crawl` pulls the full live darkstore catalog directly (~6.8k products for `vbpl`) via `lib/crawl/pandamart-live.ts`. From a blocked datacenter IP, set `PANDAMART_MODE=wayback` (stale Internet-Archive snapshots) or `off`. The crawl tries live first and auto-falls back to Wayback on failure. The old `lib/scrapers/pandamart.ts` (CloakBrowser + `CLOAKBROWSER_PROXY`) is superseded by the GraphQL path.
 - **Chaldal category coverage is incomplete.** The crawler iterates a hand-picked list of Chaldal category IDs (`lib/crawl/chaldal.ts:CHALDAL_CATEGORIES`); IDs that don't exist on Chaldal return 0 results silently. Pull more IDs from your browser's network tab on `chaldal.com` to extend coverage.
 - **Heuristic brand extraction is imperfect.** Products without a clear brand prefix (generic vegetables, eggs labeled by farm) get an extracted "brand" that's actually a descriptor. These mostly self-correct in matching since both shops use similar descriptors.
 - **LLM matching is non-deterministic** at high concurrency. Re-running `npm run match` can yield slightly different match counts (±5%). Stable matches dominate the noise.
