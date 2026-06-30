@@ -240,8 +240,9 @@ function MatchesTable({ groups }: { groups: MatchGroup[] }) {
   );
 }
 
-function Thumb({ src, alt }: { src: string | null; alt: string }) {
-  if (!src) return <div className="h-16 w-16 flex-shrink-0 rounded border border-neutral-100 bg-neutral-50" />;
+function Thumb({ src, alt, size = "h-28 w-28" }: { src: string | null; alt: string; size?: string }) {
+  const base = `${size} flex-shrink-0 rounded-lg border border-neutral-200 object-contain`;
+  if (!src) return <div className={`${base} bg-neutral-50`} />;
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
@@ -252,7 +253,7 @@ function Thumb({ src, alt }: { src: string | null; alt: string }) {
       onError={(e) => {
         e.currentTarget.style.visibility = "hidden";
       }}
-      className="h-16 w-16 flex-shrink-0 rounded border border-neutral-100 bg-white object-contain"
+      className={`${base} bg-white`}
     />
   );
 }
@@ -279,10 +280,10 @@ function OfferCell({
       {offers.map((o, i) => {
         const isMin = typeof o.price === "number" && o.price === minPrice;
         return (
-          <div key={i} className={`flex gap-2 ${i > 0 ? "mt-2 border-t border-neutral-100 pt-2" : ""}`}>
-            <Thumb src={o.imageUrl} alt={o.productName} />
-            <div className="min-w-0 flex-1">
-              <div className="flex items-baseline gap-2">
+          <div key={i} className={`flex flex-col gap-1.5 ${i > 0 ? "mt-3 border-t border-neutral-100 pt-3" : ""}`}>
+            <Thumb src={o.imageUrl} alt={o.productName} size="h-32 w-32" />
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-baseline gap-2">
                 <span
                   className={`text-base font-semibold ${isMin && !priceTied ? "text-emerald-700" : "text-neutral-900"}`}
                 >
@@ -353,7 +354,7 @@ function ProductsTable({ products }: { products: RawProduct[] }) {
               </td>
               <td className="px-4 py-3 align-top">
                 <div className="flex items-start gap-2">
-                  <Thumb src={p.imageUrl} alt={p.productName} />
+                  <Thumb src={p.imageUrl} alt={p.productName} size="h-28 w-28" />
                   <div className="min-w-0">
                     <a
                       href={p.url ?? "#"}
