@@ -101,7 +101,11 @@ function hitToRawProduct(hit: ChaldalHit, categoryName: string): RawProduct | nu
     price: typeof hit.price === "number" ? hit.price : null,
     originalPrice: typeof hit.mrp === "number" ? hit.mrp : null,
     available: hit.isAvailable !== false,
-    url: hit.slug ? `https://chaldal.com/${hit.slug}` : "https://chaldal.com/",
+    // The searchOld `slug` frequently does NOT match Chaldal's live product
+    // page — delisted SKUs and slug-generation differences (e.g. "&") give a
+    // 404. A search URL by product name always resolves and surfaces the
+    // product, so links never break.
+    url: `https://chaldal.com/search/${encodeURIComponent(hit.name)}`,
     imageUrl: hit.picturesUrls?.[0] ?? null,
   };
 }
