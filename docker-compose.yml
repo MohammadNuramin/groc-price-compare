@@ -17,6 +17,8 @@ services:
       - LLM_BASE_URL=${LLM_BASE_URL:-http://100.66.130.112:8201/v1}
       - LLM_MODEL=${LLM_MODEL:-google/gemma-4-12B-it-qat-w4a16-ct}
       - LLM_CONCURRENCY=${LLM_CONCURRENCY:-16}
+      # Public path prefix when behind a Tailscale Funnel sub-path (e.g. /groc). Empty = root.
+      - NEXT_PUBLIC_PATH_PREFIX=${PATH_PREFIX:-}
     command: npm run dev
 
   scraper:

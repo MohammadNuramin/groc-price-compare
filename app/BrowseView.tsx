@@ -7,6 +7,11 @@ import type { MatchGroup } from "@/lib/crawl/match";
 type Tab = "matches" | "all";
 type ShopFilter = "all" | "chaldal" | "shwapno";
 
+// When served behind a stripping path-proxy (e.g. Tailscale Funnel /groc),
+// API calls must include the prefix so they re-enter through the same mount.
+// Empty = served at root (local/dev).
+const PATH_PREFIX = process.env.NEXT_PUBLIC_PATH_PREFIX ?? "";
+
 const SHOP_COLOR: Record<string, string> = {
   chaldal: "bg-chaldal",
   shwapno: "bg-shwapno",
@@ -60,7 +65,7 @@ export function BrowseView({ categories, initialMatchCount }: Props) {
     params.set("limit", "300");
 
     if (tab === "matches") {
-      fetch(`/api/matches?${params}`)
+      fetch(`${PATH_PREFIX}/api/matches?${params}`)
         .then((r) => r.json() as Promise<MatchesResp>)
         .then((d) => {
           if (cancelled) return;
@@ -70,7 +75,7 @@ export function BrowseView({ categories, initialMatchCount }: Props) {
         .finally(() => !cancelled && setLoading(false));
     } else {
       if (shop !== "all") params.set("shop", shop);
-      fetch(`/api/products?${params}`)
+      fetch(`${PATH_PREFIX}/api/products?${params}`)
         .then((r) => r.json() as Promise<ProductsResp>)
         .then((d) => {
           if (cancelled) return;

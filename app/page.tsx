@@ -4,6 +4,10 @@ import { BrowseView } from "./BrowseView";
 
 export const dynamic = "force-dynamic";
 
+// Prefix for API links when served behind a stripping path-proxy (Tailscale
+// Funnel /groc). Empty = served at root (local/dev).
+const PATH_PREFIX = process.env.NEXT_PUBLIC_PATH_PREFIX ?? "";
+
 export default async function Page() {
   const data = await loadCrawl();
 
@@ -59,10 +63,10 @@ export default async function Page() {
           separately (no winner badge — not apples-to-apples).
         </p>
         <p className="mt-2 flex gap-3">
-          <Link href="/api/products?limit=20" className="underline">
+          <Link href={`${PATH_PREFIX}/api/products?limit=20`} className="underline">
             Raw products JSON
           </Link>
-          <Link href="/api/matches?limit=20" className="underline">
+          <Link href={`${PATH_PREFIX}/api/matches?limit=20`} className="underline">
             Raw matches JSON
           </Link>
         </p>
