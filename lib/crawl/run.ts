@@ -3,9 +3,32 @@ import { dirname } from "node:path";
 import { crawlChaldal } from "./chaldal";
 import { crawlShwapno } from "./shwapno";
 import { crawlPandamartWayback } from "./pandamart-wayback";
+import { crawlPandamartLive } from "./pandamart-live";
 import type { CrawlSnapshot } from "./types";
 
 const OUTPUT_PATH = "data/all-products.json";
+
+// PANDAMART_MODE: "live" (default, GraphQL — needs a residential IP),
+// "wayback" (Internet Archive, stale prices), or "off".
+// Live is tried first and falls back to Wayback on failure / zero results.
+async function crawlPandamart(
+  onProgress: (msg: string) => void,
+): Promise<{ products: import("./types").RawProduct[]; categoriesCrawled: number }> {
+  const mode = process.env.PANDAMART_MODE ?? "live";
+  if (mode === "off") return { products: [], categoriesCrawled: 0 };
+  if (mode !== "wayback") {
+    try {
+      const live = await crawlPandamartLive(onProgress);
+      if (live.products.length > 0) return live;
+      onProgress("Pandamart live returned 0 products — falling back to Wayback");
+    } catch (err) {
+      onProgress(
+        `Pandamart live failed (${err instanceof Error ? err.message : String(err)}) — falling back to Wayback`,
+      );
+    }
+  }
+  return crawlPandamartWayback(onProgress);
+}
 
 async function main() {
   const startedAt = Date.now();
@@ -20,8 +43,8 @@ async function main() {
       console.error("Shwapno crawl FAILED:", err);
       return { products: [], categoriesCrawled: 0 };
     }),
-    crawlPandamartWayback((msg) => console.log(msg)).catch((err) => {
-      console.error("Pandamart (Wayback) crawl FAILED:", err);
+    crawlPandamart((msg) => console.log(msg)).catch((err) => {
+      console.error("Pandamart crawl FAILED:", err);
       return { products: [], categoriesCrawled: 0 };
     }),
   ]);
